@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
-<title>singgah: train schedule table</title>
+<title>singgah: train, bus and shuttle table</title>
 <style>
 :root{--bg:#fafaf7;--fg:#1d1d1b;--mut:#66665f;--card:#fff;--line:#dcdcd3;--acc:#0b6b4f;--bad:#a8321f;--warn:#8a5a00}
 @media(prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ececE6;--mut:#a0a09a;--card:#201f1d;--line:#38372f;--acc:#5fd0a5;--bad:#ff8d77;--warn:#e8b64c}}
@@ -38,12 +38,13 @@ a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 </head>
 <body>
 <h1>singgah</h1>
-<div class="mut">train options for a trip, one sortable table. Not a booking site.</div>
+<div class="mut">train, bus and shuttle options for a trip, one sortable table. Not a booking site.</div>
 <p><label>Trip <select id="trip"></select></label></p>
 <div id="head"></div>
 <div class="warn" id="status"></div>
 
 <h2>Combos</h2><div id="combos"></div>
+<ul id="tips" class="mut"></ul>
 
 <h2>All trains</h2>
 <div class="chips" id="chips"></div>
@@ -51,12 +52,12 @@ a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 <p class="mut" id="count"></p>
 
 <h2>Sources</h2><ul id="src" class="mut"></ul>
-<p><a id="book" href="https://booking.kai.id/">Book on KAI Access (booking.kai.id)</a></p>
+<p><a id="book" href="https://booking.kai.id/">Check trains on KAI Access (booking.kai.id)</a></p>
 
 <footer>Built with AI assistance (Instinct and others). Not everything has been reviewed by Irvan. The data was gathered by AI from public pages and has not been checked live. Open source, AGPL-3.0: <a href="https://github.com/irvan-putra/singgah">github.com/irvan-putra/singgah</a>.</footer>
 <script>
 const $=id=>document.getElementById(id);
-const rp=n=>n==null?"n/a":"Rp"+(n/1000).toLocaleString("id-ID")+"k";
+const rp=(n,m)=>n==null?"n/a":"Rp"+(n/1000).toLocaleString("id-ID")+"k"+(m&&m!==n?"-"+(m/1000).toLocaleString("id-ID")+"k":"");
 const dd=d=>d?new Date(d+"T00:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}):"";
 let data,trip,sortKey="dep",sortDir=1,filt={dir:"all",early:false,priced:false,works:false};
 const cols=[["train","Train"],["dir","Dir"],["dep","Departs"],["arr","Arrives"],["price","Price"],["note","Note"]];
@@ -70,11 +71,12 @@ function verdict(l){
 function render(){
  $("head").innerHTML=`<div><b>${trip.event.name}</b>, ${dd(trip.event.date)} ${trip.event.start}-${trip.event.end} (WIB)<br><span class="mut">${trip.event.place}</span></div>`;
  $("status").textContent=trip.status;
+ $("tips").innerHTML=(trip.tips||[]).map(x=>`<li>${x}</li>`).join("");
  $("book").href=trip.book||"#";
  const byId=Object.fromEntries(trip.legs.map(l=>[l.id,l]));
  $("combos").innerHTML=trip.combos.map(c=>{
-  const ls=c.legs.map(i=>byId[i]);const tot=ls.every(l=>l.price!=null)?ls.reduce((s,l)=>s+l.price,0):null;
-  return `<div class="combo"><b>${c.name}</b>${ls.map(l=>`${l.train} ${dd(l.depDate)} ${l.dep}`).join(" &rarr; ")}${c.alt?` (or ${c.alt.map(i=>byId[i].train+" "+dd(byId[i].depDate)).join(", ")})`:""}<br><span>Fare estimate: ${tot==null?"n/a (fares not found)":"about "+rp(tot)}</span><br><span class="mut">${c.note}</span></div>`}).join("");
+  const ls=c.legs.map(i=>byId[i]);const ok=ls.every(l=>l.price!=null),tot=ok?ls.reduce((s,l)=>s+l.price,0):null,mx=ok?ls.reduce((s,l)=>s+(l.priceMax||l.price),0):null;
+  return `<div class="combo"><b>${c.name}</b>${ls.map(l=>`${l.train} ${dd(l.depDate)} ${l.dep}`).join(" &rarr; ")}${c.alt?` (or ${c.alt.map(i=>byId[i].train+" "+dd(byId[i].depDate)).join(", ")})`:""}<br><span>Fare estimate: ${tot==null?"n/a (fares not found)":"about "+rp(tot,mx)}</span><br><span class="mut">${c.note}</span></div>`}).join("");
  const chips=[["dir","all","All"],["dir","out","Going"],["dir","back","Return"],["early",true,"Arrives before event"],["priced",true,"Has a fare"],["works",true,"Hide ones that miss the event"]];
  $("chips").innerHTML=chips.map(([k,v,t])=>`<button aria-pressed="${filt[k]===v}" data-k="${k}" data-v="${v}">${t}</button>`).join("");
  $("chips").querySelectorAll("button").forEach(b=>b.onclick=()=>{const k=b.dataset.k,v=b.dataset.v;if(k==="dir")filt.dir=v;else filt[k]=!filt[k];render()});
@@ -83,14 +85,14 @@ function render(){
  let ls=trip.legs.filter(l=>(filt.dir==="all"||l.dir===filt.dir)&&(!filt.early||arrivesBefore(l))&&(!filt.priced||l.price!=null)&&(!filt.works||verdict(l)[1]!=="no"));
  ls.sort((a,b)=>{const x=key(a,sortKey),y=key(b,sortKey);return (x>y?1:x<y?-1:0)*sortDir});
  $("rows").innerHTML=ls.map(l=>{const[v,c]=verdict(l);return `<tr>
- <td class="t" data-l="Train">${l.train} <span class="tag">${l.class}</span></td>
+ <td class="t" data-l="Train">${l.train} <span class="tag">${l.mode&&l.mode!=="train"?l.mode+", ":""}${l.class}</span></td>
  <td data-l="Direction">${l.dir==="out"?"Going":"Return"}: ${l.from} &rarr; ${l.to}</td>
  <td data-l="Departs">${dd(l.depDate)} ${l.dep}</td>
  <td data-l="Arrives">${l.arrDate?dd(l.arrDate)+" "+l.arr:"not found"}</td>
- <td data-l="Price">${rp(l.price)} <span class="mut">(${l.priceNote})</span></td>
+ <td data-l="Price">${rp(l.price,l.priceMax)} <span class="mut">(${l.priceNote})</span></td>
  <td data-l="Note"><span class="${c}">${v}.</span> ${l.note}</td></tr>`}).join("");
  $("count").textContent=ls.length+" of "+trip.legs.length+" shown. Tap a column heading to sort.";
- $("src").innerHTML=trip.sources.map(s=>`<li><a href="${s.url}">${s.label}</a></li>`).join("")+"<li>Progo 300 fare: a 4 Nov fare listing (no link kept).</li>";
+ $("src").innerHTML=trip.sources.map(s=>`<li><a href="${s.url}">${s.label}</a></li>`).join("")+"<li>Progo 300 fare: a 4 Nov fare listing, also in the CNN list above.</li>";
 }
 fetch("data/trips.json").then(r=>r.json()).then(d=>{
  data=d;const sel=$("trip");sel.innerHTML=d.trips.map(t=>`<option value="${t.id}">${t.title}</option>`).join("");

@@ -1,43 +1,537 @@
 {
-  "trips": [
+ "trips": [
+  {
+   "id": "pyjogja-dec-2026",
+   "title": "jakarta to jogja for pyjogja",
+   "event": {
+    "name": "PyJogja",
+    "date": "2026-12-05",
+    "start": "09:00",
+    "end": "17:00",
+    "place": "Garuda Spark Innovation Hub, Mlati, Sleman",
+    "note": "times in WIB"
+   },
+   "status": "Schedule valid from 1 Dec 2026. Not checked live: seats, exact fares and bus times can differ. Bus and shuttle prices are from older 2026 articles.",
+   "book": "https://booking.kai.id/",
+   "sources": [
     {
-      "id": "pyjogja-dec-2026",
-      "title": "jakarta to jogja for pyjogja",
-      "event": {
-        "name": "PyJogja",
-        "date": "2026-12-05",
-        "start": "09:00",
-        "end": "17:00",
-        "place": "Garuda Spark Innovation Hub, Mlati, Sleman",
-        "note": "times in WIB"
-      },
-      "status": "Schedule valid from 1 Dec 2026. Not checked live: seats and exact fares can differ on booking.kai.id.",
-      "book": "https://booking.kai.id/",
-      "sources": [
-        {"label": "detik: jadwal terbaru KA Gambir/Pasarsenen ke Jogja mulai 1 Desember", "url": "https://www.detik.com/jogja/bisnis/d-8759824/jadwal-terbaru-ka-dari-stasiun-gambir-pasarsenen-ke-jogja-mulai-1-desember"},
-        {"label": "168railway: Taksaka 34", "url": "https://168railway.com/gapeka-2026/ka/34-taksaka"},
-        {"label": "168railway: Taksaka 32", "url": "https://168railway.com/gapeka-2026/ka/32-taksaka"},
-        {"label": "168railway: Taksaka 30", "url": "https://168railway.com/gapeka-2026/ka/30-taksaka"},
-        {"label": "168railway: Progo 300", "url": "https://168railway.com/gapeka-2026/ka/300-progo"},
-        {"label": "168railway: Taksaka 31", "url": "https://168railway.com/gapeka-2026/ka/31-taksaka"},
-        {"label": "168railway: Taksaka 33", "url": "https://168railway.com/gapeka-2026/ka/33-taksaka"}
-      ],
-      "legs": [
-        {"id": "taksaka34", "dir": "out", "train": "Taksaka 34", "class": "Executive", "from": "Gambir", "to": "Yogyakarta", "depDate": "2026-12-04", "dep": "22:00", "arrDate": "2026-12-05", "arr": "04:22", "price": 680000, "priceNote": "Rp680k and up", "note": "Overnight. Arrives hours before the event."},
-        {"id": "progo300", "dir": "out", "train": "Progo 300", "class": "Economy", "from": "Pasarsenen", "to": "Lempuyangan", "depDate": "2026-12-04", "dep": "23:45", "arrDate": "2026-12-05", "arr": "07:24", "price": 330000, "priceNote": "about Rp330k, from a 4 Nov fare listing", "note": "Cheapest. Arrives 07:24, tight for a 09:00 start. Lempuyangan, not Tugu."},
-        {"id": "taksaka32", "dir": "out", "train": "Taksaka 32", "class": "Executive", "from": "Gambir", "to": "Yogyakarta", "depDate": "2026-12-04", "dep": "07:00", "arrDate": "2026-12-04", "arr": "13:16", "price": null, "priceNote": "fare not found", "note": "Day before the event, needs a hotel night."},
-        {"id": "taksaka30", "dir": "out", "train": "Taksaka 30", "class": "Executive", "from": "Gambir", "to": "Yogyakarta", "depDate": "2026-12-04", "dep": "13:00", "arrDate": "2026-12-04", "arr": "19:21", "price": null, "priceNote": "fare not found", "note": "Day before the event, needs a hotel night."},
-        {"id": "senja196", "dir": "out", "train": "Senja Utama Yogyakarta 196", "class": "Executive", "from": "Pasarsenen", "to": "Yogyakarta", "depDate": "2026-12-04", "dep": "18:50", "arrDate": null, "arr": null, "price": 590000, "priceNote": "about Rp590k", "note": "Arrival time not found."},
-        {"id": "taksaka33-5", "dir": "back", "train": "Taksaka 33", "class": "Executive", "from": "Yogyakarta", "to": "Gambir", "depDate": "2026-12-05", "dep": "15:40", "arrDate": "2026-12-05", "arr": "22:00", "price": null, "priceNote": "fare not found", "note": "Leaves before the event ends (17:00)."},
-        {"id": "taksaka31-5", "dir": "back", "train": "Taksaka 31", "class": "Executive", "from": "Yogyakarta", "to": "Gambir", "depDate": "2026-12-05", "dep": "21:40", "arrDate": "2026-12-06", "arr": "04:02", "price": 680000, "priceNote": "estimate, assumed same as Taksaka 34; not found", "note": "Overnight home after the event."},
-        {"id": "taksaka33-6", "dir": "back", "train": "Taksaka 33", "class": "Executive", "from": "Yogyakarta", "to": "Gambir", "depDate": "2026-12-06", "dep": "15:40", "arrDate": "2026-12-06", "arr": "22:00", "price": null, "priceNote": "fare not found", "note": "Next day, after a hotel night."},
-        {"id": "taksaka31-6", "dir": "back", "train": "Taksaka 31", "class": "Executive", "from": "Yogyakarta", "to": "Gambir", "depDate": "2026-12-06", "dep": "21:40", "arrDate": "2026-12-07", "arr": "04:02", "price": 680000, "priceNote": "estimate, assumed same as Taksaka 34; not found", "note": "Next day, after a hotel night."}
-      ],
-      "combos": [
-        {"id": "A", "name": "A: overnight both ways", "legs": ["taksaka34", "taksaka31-5"], "note": "No hotel. Arrive 04:22, home 04:02 next day."},
-        {"id": "B", "name": "B: day train, hotel night, back on 6 Dec", "legs": ["taksaka30", "taksaka31-6"], "alt": ["taksaka33-6"], "note": "Plus one hotel night (not priced). Return can be Taksaka 31 or 33 on 6 Dec."},
-        {"id": "C", "name": "C: cheapest", "legs": ["progo300", "taksaka31-5"], "note": "Progo arrives 07:24, tight for 09:00."}
-      ]
+     "label": "detik: jadwal terbaru KA Gambir/Pasarsenen ke Jogja mulai 1 Desember",
+     "url": "https://www.detik.com/jogja/bisnis/d-8759824/jadwal-terbaru-ka-dari-stasiun-gambir-pasarsenen-ke-jogja-mulai-1-desember"
+    },
+    {
+     "label": "168railway: Taksaka 34",
+     "url": "https://168railway.com/gapeka-2026/ka/34-taksaka"
+    },
+    {
+     "label": "168railway: Taksaka 32",
+     "url": "https://168railway.com/gapeka-2026/ka/32-taksaka"
+    },
+    {
+     "label": "168railway: Taksaka 30",
+     "url": "https://168railway.com/gapeka-2026/ka/30-taksaka"
+    },
+    {
+     "label": "168railway: Progo 300",
+     "url": "https://168railway.com/gapeka-2026/ka/300-progo"
+    },
+    {
+     "label": "168railway: Taksaka 31",
+     "url": "https://168railway.com/gapeka-2026/ka/31-taksaka"
+    },
+    {
+     "label": "168railway: Taksaka 33",
+     "url": "https://168railway.com/gapeka-2026/ka/33-taksaka"
+    },
+    {
+     "label": "CNN Indonesia: train fares Jakarta-Jogja (4 Nov 2026)",
+     "url": "https://www.cnnindonesia.com/gaya-hidup/20261103105004-269-1422663/daftar-pilihan-kereta-api-jakarta-jogja-dan-harga-tiketnya-2026"
+    },
+    {
+     "label": "Traveloka: Jakarta-Yogyakarta trains (24 Nov listing, old timetable)",
+     "url": "https://www.traveloka.com/id-id/kereta-api/rute/jakarta.yogyakarta"
+    },
+    {
+     "label": "168railway: Fajar Utama Yk 198",
+     "url": "https://www.168railway.com/gapeka-2026/ka/198-fajar-utama-yk"
+    },
+    {
+     "label": "168railway: Fajar Utama Yk 197",
+     "url": "https://www.168railway.com/gapeka-2026/ka/197-fajar-utama-yk"
+    },
+    {
+     "label": "168railway: Senja Utama Yk 195",
+     "url": "https://www.168railway.com/gapeka-2026/ka/195-senja-utama-yk"
+    },
+    {
+     "label": "168railway: Progo 299",
+     "url": "https://168railway.com/gapeka-2026/ka/299-progo"
+    },
+    {
+     "label": "168railway: Borobudur 78F",
+     "url": "https://168railway.com/gapeka-2026/ka/78f-borobudur"
+    },
+    {
+     "label": "168railway: Borobudur 77F",
+     "url": "https://168railway.com/gapeka-2026/ka/77f-borobudur"
+    },
+    {
+     "label": "Kompas: Jakarta-Yogyakarta bus fares (Mar 2026)",
+     "url": "https://otomotif.kompas.com/read/2026/03/05/074200215/tiket-bus-jakarta-yogyakarta-sebelum-arus-mudik--mulai-rp-170.000"
+    },
+    {
+     "label": "Radar Madiun: sleeper buses Jakarta-Yogyakarta (Apr 2026)",
+     "url": "https://radarmadiun.jawapos.com/wisata/2604170193/jakarta-yogyakarta-senyaman-tidur-di-hotel-ini-5-rekomendasi-sleeper-bus-dengan-fasilitas-kelas-atas"
+    },
+    {
+     "label": "IDN Times: sleeper bus fares (Feb 2026)",
+     "url": "https://www.idntimes.com/automotive/car/sleeper-bus-jakarta-yogyakarta-q9t01-00-vs37w-n1xrlq"
+    },
+    {
+     "label": "Jasa Travel: Jakarta-Jogja travel shuttle (Aug 2026)",
+     "url": "https://jasatravel.info/travel-jakarta-jogja/"
     }
-  ]
+   ],
+   "legs": [
+    {
+     "id": "taksaka34",
+     "dir": "out",
+     "train": "Taksaka 34",
+     "class": "Executive",
+     "from": "Gambir",
+     "to": "Yogyakarta",
+     "depDate": "2026-12-04",
+     "dep": "22:00",
+     "arrDate": "2026-12-05",
+     "arr": "04:22",
+     "price": 680000,
+     "priceNote": "Rp680k and up",
+     "note": "Overnight. Arrives hours before the event.",
+     "mode": "train",
+     "priceMax": null
+    },
+    {
+     "id": "progo300",
+     "dir": "out",
+     "train": "Progo 300",
+     "class": "Economy",
+     "from": "Pasarsenen",
+     "to": "Lempuyangan",
+     "depDate": "2026-12-04",
+     "dep": "23:45",
+     "arrDate": "2026-12-05",
+     "arr": "07:24",
+     "price": 330000,
+     "priceNote": "about Rp330k, from a 4 Nov fare listing",
+     "note": "Cheapest. Arrives 07:24, tight for a 09:00 start. Lempuyangan, not Tugu.",
+     "mode": "train",
+     "priceMax": null
+    },
+    {
+     "id": "taksaka32",
+     "dir": "out",
+     "train": "Taksaka 32",
+     "class": "Executive",
+     "from": "Gambir",
+     "to": "Yogyakarta",
+     "depDate": "2026-12-04",
+     "dep": "07:00",
+     "arrDate": "2026-12-04",
+     "arr": "13:16",
+     "price": null,
+     "priceNote": "fare not found",
+     "note": "Day before the event, needs a hotel night.",
+     "mode": "train",
+     "priceMax": null
+    },
+    {
+     "id": "taksaka30",
+     "dir": "out",
+     "train": "Taksaka 30",
+     "class": "Executive",
+     "from": "Gambir",
+     "to": "Yogyakarta",
+     "depDate": "2026-12-04",
+     "dep": "13:00",
+     "arrDate": "2026-12-04",
+     "arr": "19:21",
+     "price": null,
+     "priceNote": "fare not found",
+     "note": "Day before the event, needs a hotel night.",
+     "mode": "train",
+     "priceMax": null
+    },
+    {
+     "id": "senja196",
+     "dir": "out",
+     "train": "Senja Utama Yogyakarta 196",
+     "class": "Executive",
+     "from": "Pasarsenen",
+     "to": "Yogyakarta",
+     "depDate": "2026-12-04",
+     "dep": "18:50",
+     "arrDate": null,
+     "arr": null,
+     "price": 590000,
+     "priceNote": "about Rp590k",
+     "note": "Arrival time not found.",
+     "mode": "train",
+     "priceMax": null
+    },
+    {
+     "id": "taksaka33-5",
+     "dir": "back",
+     "train": "Taksaka 33",
+     "class": "Executive",
+     "from": "Yogyakarta",
+     "to": "Gambir",
+     "depDate": "2026-12-05",
+     "dep": "15:40",
+     "arrDate": "2026-12-05",
+     "arr": "22:00",
+     "price": null,
+     "priceNote": "fare not found",
+     "note": "Leaves before the event ends (17:00).",
+     "mode": "train",
+     "priceMax": null
+    },
+    {
+     "id": "taksaka31-5",
+     "dir": "back",
+     "train": "Taksaka 31",
+     "class": "Executive",
+     "from": "Yogyakarta",
+     "to": "Gambir",
+     "depDate": "2026-12-05",
+     "dep": "21:40",
+     "arrDate": "2026-12-06",
+     "arr": "04:02",
+     "price": 680000,
+     "priceNote": "estimate, assumed same as Taksaka 34; not found",
+     "note": "Overnight home after the event.",
+     "mode": "train",
+     "priceMax": null
+    },
+    {
+     "id": "taksaka33-6",
+     "dir": "back",
+     "train": "Taksaka 33",
+     "class": "Executive",
+     "from": "Yogyakarta",
+     "to": "Gambir",
+     "depDate": "2026-12-06",
+     "dep": "15:40",
+     "arrDate": "2026-12-06",
+     "arr": "22:00",
+     "price": null,
+     "priceNote": "fare not found",
+     "note": "Next day, after a hotel night.",
+     "mode": "train",
+     "priceMax": null
+    },
+    {
+     "id": "taksaka31-6",
+     "dir": "back",
+     "train": "Taksaka 31",
+     "class": "Executive",
+     "from": "Yogyakarta",
+     "to": "Gambir",
+     "depDate": "2026-12-06",
+     "dep": "21:40",
+     "arrDate": "2026-12-07",
+     "arr": "04:02",
+     "price": 680000,
+     "priceNote": "estimate, assumed same as Taksaka 34; not found",
+     "note": "Next day, after a hotel night.",
+     "mode": "train",
+     "priceMax": null
+    },
+    {
+     "id": "fajar198",
+     "dir": "out",
+     "train": "Fajar Utama Yogyakarta 198",
+     "to": "Yogyakarta",
+     "depDate": "2026-12-04",
+     "dep": "07:15",
+     "arrDate": "2026-12-04",
+     "arr": "15:13",
+     "price": 330000,
+     "priceMax": 510000,
+     "priceNote": "economy about Rp330k, executive about Rp510k, from a 24 Nov Traveloka listing of the old Fajar Utama Yk 110B (not the new 198)",
+     "note": "Day before the event, needs a hotel night. Same fare as Progo but arrives in daylight at Tugu.",
+     "mode": "train",
+     "class": "Economy / Executive",
+     "from": "Pasarsenen"
+    },
+    {
+     "id": "fajar197",
+     "dir": "back",
+     "train": "Fajar Utama Yogyakarta 197",
+     "to": "Pasarsenen",
+     "depDate": "2026-12-06",
+     "dep": "07:00",
+     "arrDate": "2026-12-06",
+     "arr": "14:51",
+     "price": 330000,
+     "priceMax": 510000,
+     "priceNote": "assumed same as 198 (old 110B listing); not found for 197",
+     "note": "Morning after a hotel night.",
+     "mode": "train",
+     "class": "Economy / Executive",
+     "from": "Yogyakarta"
+    },
+    {
+     "id": "senja195",
+     "dir": "back",
+     "train": "Senja Utama Yogyakarta 195",
+     "to": "Pasarsenen",
+     "depDate": "2026-12-05",
+     "dep": "17:50",
+     "arrDate": "2026-12-06",
+     "arr": "01:26",
+     "price": 590000,
+     "priceNote": "assumed same as Senja Utama 196 going (about Rp590k); not found for 195",
+     "note": "Leaves 50 minutes after the event ends. Tight from Mlati to Tugu, check the travel time. Home at 01:26.",
+     "mode": "train",
+     "priceMax": null,
+     "class": "Executive",
+     "from": "Yogyakarta"
+    },
+    {
+     "id": "progo299",
+     "dir": "back",
+     "train": "Progo 299",
+     "to": "Pasarsenen",
+     "depDate": "2026-12-06",
+     "dep": "13:30",
+     "arrDate": "2026-12-06",
+     "arr": "21:41",
+     "price": 330000,
+     "priceNote": "assumed same as Progo 300 going (about Rp330k); return fare not found",
+     "note": "Needs a hotel night. Leaves Lempuyangan, not Tugu. The 5 Dec departure at 13:30 would miss the event.",
+     "mode": "train",
+     "priceMax": null,
+     "class": "Economy",
+     "from": "Lempuyangan"
+    },
+    {
+     "id": "borobudur78f",
+     "dir": "out",
+     "train": "Borobudur 78F",
+     "to": "Lempuyangan",
+     "depDate": "2026-12-04",
+     "dep": "05:10",
+     "arrDate": "2026-12-04",
+     "arr": "12:41",
+     "price": null,
+     "priceNote": "fare not found",
+     "note": "Facultative: runs only on certain days, may not run on 4 Dec. Needs a hotel night.",
+     "mode": "train",
+     "priceMax": null,
+     "class": "not found",
+     "from": "Gambir"
+    },
+    {
+     "id": "borobudur77f",
+     "dir": "back",
+     "train": "Borobudur 77F",
+     "to": "Gambir",
+     "depDate": "2026-12-05",
+     "dep": "16:20",
+     "arrDate": "2026-12-06",
+     "arr": "00:18",
+     "price": null,
+     "priceNote": "fare not found",
+     "note": "Facultative: runs only on certain days. Leaves before the event ends.",
+     "mode": "train",
+     "priceMax": null,
+     "class": "not found",
+     "from": "Lempuyangan"
+    },
+    {
+     "id": "busx-out",
+     "mode": "bus",
+     "dir": "out",
+     "train": "Bus overnight, Executive",
+     "to": "Yogyakarta (terminal varies)",
+     "depDate": "2026-12-04",
+     "dep": "19:00",
+     "arrDate": "2026-12-05",
+     "arr": "03:00",
+     "price": 170000,
+     "priceMax": 220000,
+     "priceNote": "Rp170k-220k, Mar 2026 listings (Sumber Alam, Sinar Jaya), not December",
+     "note": "Typical overnight bus, about 8 hours (Rosalia Indah runs 19:00). Times and terminals depend on the operator. No hotel. Arrives hours before the event.",
+     "class": "Executive",
+     "from": "Jakarta (terminal varies)"
+    },
+    {
+     "id": "busx-back",
+     "mode": "bus",
+     "dir": "back",
+     "train": "Bus overnight, Executive",
+     "to": "Jakarta (terminal varies)",
+     "depDate": "2026-12-05",
+     "dep": "19:00",
+     "arrDate": "2026-12-06",
+     "arr": "03:00",
+     "price": 170000,
+     "priceMax": 220000,
+     "priceNote": "assumed same as going, Mar 2026 listings",
+     "note": "Leaves after the event ends. Times depend on the operator.",
+     "class": "Executive",
+     "from": "Yogyakarta (terminal varies)"
+    },
+    {
+     "id": "buss-out",
+     "mode": "bus",
+     "dir": "out",
+     "train": "Bus overnight, Sleeper",
+     "to": "Yogyakarta (terminal varies)",
+     "depDate": "2026-12-04",
+     "dep": "19:00",
+     "arrDate": "2026-12-05",
+     "arr": "03:00",
+     "price": 350000,
+     "priceNote": "about Rp350k-370k, Feb/Mar 2026 listings",
+     "note": "Lie-flat seat, about 8 hours. Costs about the same as the Progo train.",
+     "priceMax": null,
+     "class": "Sleeper",
+     "from": "Jakarta (terminal varies)"
+    },
+    {
+     "id": "buss-back",
+     "mode": "bus",
+     "dir": "back",
+     "train": "Bus overnight, Sleeper",
+     "to": "Jakarta (terminal varies)",
+     "depDate": "2026-12-05",
+     "dep": "19:00",
+     "arrDate": "2026-12-06",
+     "arr": "03:00",
+     "price": 350000,
+     "priceNote": "assumed same as going",
+     "note": "Leaves after the event ends.",
+     "priceMax": null,
+     "class": "Sleeper",
+     "from": "Yogyakarta (terminal varies)"
+    },
+    {
+     "id": "shut-out",
+     "mode": "shuttle",
+     "dir": "out",
+     "train": "Travel shuttle (door to door)",
+     "to": "Yogyakarta (drop-off)",
+     "depDate": "2026-12-04",
+     "dep": "19:00",
+     "arrDate": null,
+     "arr": null,
+     "price": 180000,
+     "priceMax": 350000,
+     "priceNote": "Rp180k-350k range, Aug 2026 article",
+     "note": "10 to 13 hours. Pickup and drop-off points depend on the operator, so the departure time is a placeholder. Arrival not stated.",
+     "class": "Shuttle",
+     "from": "Jakarta (pickup)"
+    },
+    {
+     "id": "shut-back",
+     "mode": "shuttle",
+     "dir": "back",
+     "train": "Travel shuttle (door to door)",
+     "to": "Jakarta (drop-off)",
+     "depDate": "2026-12-05",
+     "dep": "19:00",
+     "arrDate": null,
+     "arr": null,
+     "price": 180000,
+     "priceMax": 350000,
+     "priceNote": "Rp180k-350k range, Aug 2026 article",
+     "note": "10 to 13 hours. Placeholder time. Leaves after the event ends.",
+     "class": "Shuttle",
+     "from": "Yogyakarta (pickup)"
+    }
+   ],
+   "combos": [
+    {
+     "id": "A",
+     "name": "A: overnight both ways",
+     "legs": [
+      "taksaka34",
+      "taksaka31-5"
+     ],
+     "note": "No hotel. Arrive 04:22, home 04:02 next day."
+    },
+    {
+     "id": "B",
+     "name": "B: day train, hotel night, back on 6 Dec",
+     "legs": [
+      "taksaka30",
+      "taksaka31-6"
+     ],
+     "alt": [
+      "taksaka33-6"
+     ],
+     "note": "Plus one hotel night (not priced). Return can be Taksaka 31 or 33 on 6 Dec."
+    },
+    {
+     "id": "C",
+     "name": "C: cheapest",
+     "legs": [
+      "progo300",
+      "taksaka31-5"
+     ],
+     "note": "Progo arrives 07:24, tight for 09:00."
+    },
+    {
+     "id": "D",
+     "name": "D: Progo both ways, one hotel night",
+     "legs": [
+      "progo300",
+      "progo299"
+     ],
+     "note": "Cheapest train pair. Plus one hotel night (not priced). Progo return is Dec 6 13:30 from Lempuyangan."
+    },
+    {
+     "id": "E",
+     "name": "E: Progo there, Senja Utama back, no hotel",
+     "legs": [
+      "progo300",
+      "senja195"
+     ],
+     "note": "Home 01:26 on Dec 6. Senja Utama leaves Tugu 17:50, tight after a 17:00 end."
+    },
+    {
+     "id": "F",
+     "name": "F: overnight bus both ways (Executive)",
+     "legs": [
+      "busx-out",
+      "busx-back"
+     ],
+     "note": "Cheapest overall. No hotel. Fares are from March 2026 listings and times vary by operator."
+    },
+    {
+     "id": "G",
+     "name": "G: overnight sleeper bus both ways",
+     "legs": [
+      "buss-out",
+      "buss-back"
+     ],
+     "note": "No hotel. About the price of Progo going, with a lie-flat seat."
+    },
+    {
+     "id": "H",
+     "name": "H: travel shuttle both ways",
+     "legs": [
+      "shut-out",
+      "shut-back"
+     ],
+     "note": "Door to door, 10 to 13 hours, wide fare range."
+    }
+   ],
+   "tips": [
+    "Other train classes: from 1 Dec the only Economy train from Jakarta to Jogja in the new timetable is Progo (about Rp330k). Fajar Utama Yogyakarta also has Economy, about Rp330k by an old listing. Everything else is Executive, about Rp590k-740k.",
+    "Nearby days: the same trains run daily, so leaving Dec 3 or Dec 4 only changes hotel nights. I found no date-specific fare listing, so check Dec 3 and Dec 4 on booking.kai.id.",
+    "Bus and shuttle fares come from articles dated Feb to Aug 2026, not December. Check the operator before relying on them."
+   ]
+  }
+ ]
 }
