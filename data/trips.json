@@ -458,7 +458,14 @@
       "taksaka34",
       "taksaka31-5"
      ],
-     "note": "No hotel. Arrive 04:22, home 04:02 next day."
+     "note": "No hotel. Arrive 04:22, home 04:02 next day.",
+     "buy": [
+      {
+       "label": "KAI Access: booking.kai.id (official)",
+       "url": "https://booking.kai.id/"
+      }
+     ],
+     "buyNote": "Official KAI site. Search the station pair and date yourself; the page links the trains, not a deep link."
     },
     {
      "id": "B",
@@ -470,7 +477,14 @@
      "alt": [
       "taksaka33-6"
      ],
-     "note": "Plus one hotel night (not priced). Return can be Taksaka 31 or 33 on 6 Dec."
+     "note": "Plus one hotel night (not priced). Return can be Taksaka 31 or 33 on 6 Dec.",
+     "buy": [
+      {
+       "label": "KAI Access: booking.kai.id (official)",
+       "url": "https://booking.kai.id/"
+      }
+     ],
+     "buyNote": "Official KAI site. Search the station pair and date yourself; the page links the trains, not a deep link."
     },
     {
      "id": "C",
@@ -479,7 +493,14 @@
       "progo300",
       "taksaka31-5"
      ],
-     "note": "Progo arrives 07:24, tight for 09:00."
+     "note": "Progo arrives 07:24, tight for 09:00.",
+     "buy": [
+      {
+       "label": "KAI Access: booking.kai.id (official)",
+       "url": "https://booking.kai.id/"
+      }
+     ],
+     "buyNote": "Official KAI site. Search the station pair and date yourself; the page links the trains, not a deep link."
     },
     {
      "id": "D",
@@ -488,7 +509,14 @@
       "progo300",
       "progo299"
      ],
-     "note": "Cheapest train pair. Plus one hotel night (not priced). Progo return is Dec 6 13:30 from Lempuyangan."
+     "note": "Cheapest train pair. Plus one hotel night (not priced). Progo return is Dec 6 13:30 from Lempuyangan.",
+     "buy": [
+      {
+       "label": "KAI Access: booking.kai.id (official)",
+       "url": "https://booking.kai.id/"
+      }
+     ],
+     "buyNote": "Official KAI site. Search the station pair and date yourself; the page links the trains, not a deep link."
     },
     {
      "id": "E",
@@ -497,7 +525,14 @@
       "progo300",
       "senja195"
      ],
-     "note": "Home 01:26 on Dec 6. Senja Utama leaves Tugu 17:50, tight after a 17:00 end."
+     "note": "Home 01:26 on Dec 6. Senja Utama leaves Tugu 17:50, tight after a 17:00 end.",
+     "buy": [
+      {
+       "label": "KAI Access: booking.kai.id (official)",
+       "url": "https://booking.kai.id/"
+      }
+     ],
+     "buyNote": "Official KAI site. Search the station pair and date yourself; the page links the trains, not a deep link."
     },
     {
      "id": "F",
@@ -506,7 +541,22 @@
       "busx-out",
       "busx-back"
      ],
-     "note": "Cheapest overall. No hotel. Fares are from March 2026 listings and times vary by operator."
+     "note": "Cheapest overall. No hotel. Fares are from March 2026 listings and times vary by operator.",
+     "buy": [
+      {
+       "label": "Going: tiket.com Jakarta to Jogja bus and travel",
+       "url": "https://www.tiket.com/id-id/bus-travel/rute/jakarta-ke-yogyakarta"
+      },
+      {
+       "label": "Return: tiket.com Jogja to Jakarta bus and travel",
+       "url": "https://www.tiket.com/id-id/bus-travel/rute/yogyakarta-ke-jakarta"
+      },
+      {
+       "label": "Also: Traveloka Jakarta to Yogyakarta bus and travel",
+       "url": "https://www.traveloka.com/id-id/bus-and-shuttle/route/jakarta.yogyakarta"
+      }
+     ],
+     "buyNote": "Marketplace listings, not the operator's own page. Sleeper and Executive are separate filters there. I did not find a verified operator booking page, so check the operator and time before paying."
     },
     {
      "id": "G",
@@ -515,7 +565,22 @@
       "buss-out",
       "buss-back"
      ],
-     "note": "No hotel. About the price of Progo going, with a lie-flat seat."
+     "note": "No hotel. About the price of Progo going, with a lie-flat seat.",
+     "buy": [
+      {
+       "label": "Going: tiket.com Jakarta to Jogja bus and travel",
+       "url": "https://www.tiket.com/id-id/bus-travel/rute/jakarta-ke-yogyakarta"
+      },
+      {
+       "label": "Return: tiket.com Jogja to Jakarta bus and travel",
+       "url": "https://www.tiket.com/id-id/bus-travel/rute/yogyakarta-ke-jakarta"
+      },
+      {
+       "label": "Also: Traveloka Jakarta to Yogyakarta bus and travel",
+       "url": "https://www.traveloka.com/id-id/bus-and-shuttle/route/jakarta.yogyakarta"
+      }
+     ],
+     "buyNote": "Marketplace listings, not the operator's own page. Sleeper and Executive are separate filters there. I did not find a verified operator booking page, so check the operator and time before paying."
     },
     {
      "id": "H",
@@ -524,7 +589,22 @@
       "shut-out",
       "shut-back"
      ],
-     "note": "Door to door, 10 to 13 hours, wide fare range."
+     "note": "Door to door, 10 to 13 hours, wide fare range.",
+     "buy": [
+      {
+       "label": "Going: tiket.com Jakarta to Jogja bus and travel",
+       "url": "https://www.tiket.com/id-id/bus-travel/rute/jakarta-ke-yogyakarta"
+      },
+      {
+       "label": "Return: tiket.com Jogja to Jakarta bus and travel",
+       "url": "https://www.tiket.com/id-id/bus-travel/rute/yogyakarta-ke-jakarta"
+      },
+      {
+       "label": "Also: Traveloka Jakarta to Yogyakarta bus and travel",
+       "url": "https://www.traveloka.com/id-id/bus-and-shuttle/route/jakarta.yogyakarta"
+      }
+     ],
+     "buyNote": "Marketplace listings, not the operator's own page. Sleeper and Executive are separate filters there. I did not find a verified operator booking page, so check the operator and time before paying."
     }
    ],
    "tips": [

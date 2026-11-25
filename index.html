@@ -76,7 +76,7 @@ function render(){
  const byId=Object.fromEntries(trip.legs.map(l=>[l.id,l]));
  $("combos").innerHTML=trip.combos.map(c=>{
   const ls=c.legs.map(i=>byId[i]);const ok=ls.every(l=>l.price!=null),tot=ok?ls.reduce((s,l)=>s+l.price,0):null,mx=ok?ls.reduce((s,l)=>s+(l.priceMax||l.price),0):null;
-  return `<div class="combo"><b>${c.name}</b>${ls.map(l=>`${l.train} ${dd(l.depDate)} ${l.dep}`).join(" &rarr; ")}${c.alt?` (or ${c.alt.map(i=>byId[i].train+" "+dd(byId[i].depDate)).join(", ")})`:""}<br><span>Fare estimate: ${tot==null?"n/a (fares not found)":"about "+rp(tot,mx)}</span><br><span class="mut">${c.note}</span></div>`}).join("");
+  return `<div class="combo"><b>${c.name}</b>${ls.map(l=>`${l.train} ${dd(l.depDate)} ${l.dep}`).join(" &rarr; ")}${c.alt?` (or ${c.alt.map(i=>byId[i].train+" "+dd(byId[i].depDate)).join(", ")})`:""}<br><span>Fare estimate: ${tot==null?"n/a (fares not found)":"about "+rp(tot,mx)}</span><br><span class="mut">${c.note}</span><br>Buy: ${(c.buy||[]).map(b=>`<a href="${b.url}">${b.label}</a>`).join(" | ")||"no verified buy link found"}<br><span class="mut">${c.buyNote||""}</span></div>`}).join("");
  const chips=[["dir","all","All"],["dir","out","Going"],["dir","back","Return"],["early",true,"Arrives before event"],["priced",true,"Has a fare"],["works",true,"Hide ones that miss the event"]];
  $("chips").innerHTML=chips.map(([k,v,t])=>`<button aria-pressed="${filt[k]===v}" data-k="${k}" data-v="${v}">${t}</button>`).join("");
  $("chips").querySelectorAll("button").forEach(b=>b.onclick=()=>{const k=b.dataset.k,v=b.dataset.v;if(k==="dir")filt.dir=v;else filt[k]=!filt[k];render()});
