@@ -11,7 +11,7 @@
     "place": "Garuda Spark Innovation Hub, Mlati, Sleman",
     "note": "times in WIB"
    },
-   "status": "Live recheck 26 Nov 2026 around 09:40 WIB: all KAI trains priced and seat-checked on booking.kai.id for 3-6 Dec, bus checked live on tiket.com for 4 and 6 Dec. Sold out live: Progo 300 on 4 Dec, Progo 299 on 6 Dec, Taksaka 33 regular on 6 Dec. Borobudur 77F/78F not bookable on KAI for these dates. Seats and fares can still change; sleeper bus and shuttle prices are from older 2026 articles.",
+   "status": "Live recheck 26 Nov 2026 around 19:50 WIB: all KAI trains re-priced and seat-checked on booking.kai.id for 3-6 Dec; bus, sleeper and shuttle checked live on tiket.com for 4 Dec. Sold out live: Progo 300 on 4 Dec, Progo 299 on 6 Dec, Taksaka 33 regular on 6 Dec, Singasari 150/149 both directions 4-6 Dec. Borobudur 77F/78F not bookable on KAI for these dates. Seats and fares can still change.",
    "book": "https://booking.kai.id/",
    "sources": [
     {
@@ -104,7 +104,7 @@
      "arrDate": "2026-12-05",
      "arr": "04:22",
      "price": 650000,
-     "priceNote": "live booking.kai.id 26 Nov: Rp650k, Tersisa 42 kursi on 4 Dec (3 Dec also Rp650k, Tersedia)",
+     "priceNote": "live booking.kai.id 26 Nov evening: Rp650k, Tersisa 32 kursi on 4 Dec (was 42 in the morning; 3 Dec also Rp650k, Tersedia)",
      "note": "Overnight. Arrives hours before the event.",
      "mode": "train",
      "priceMax": null
@@ -121,7 +121,7 @@
      "arrDate": "2026-12-05",
      "arr": "07:24",
      "price": 330000,
-     "priceNote": "live booking.kai.id 26 Nov: Rp330k, SOLD OUT on 4 Dec; on 3 Dec Tersisa 47 kursi",
+     "priceNote": "live booking.kai.id 26 Nov evening: Rp330k, SOLD OUT on 4 Dec; on 3 Dec Tersisa 34 kursi (was 47 in the morning)",
      "note": "Overnight, arrives 07:24. Live 26 Nov: 4 Dec sold out. 3 Dec still has seats. Fallback on 4 Dec: Jayakarta 290 (Pasar Senen 17:15, arr 00:45) Rp340k Tersedia, or Bogowonto 192 (17:45, arr 01:41) Rp375k Tersedia.",
      "mode": "train",
      "priceMax": null
@@ -138,7 +138,7 @@
      "arrDate": "2026-12-04",
      "arr": "13:16",
      "price": 650000,
-     "priceNote": "live booking.kai.id 26 Nov: Rp650k, Tersisa 31 kursi on 4 Dec (3 Dec Rp610k Tersedia)",
+     "priceNote": "live booking.kai.id 26 Nov evening: Rp650k, Tersisa 24 kursi on 4 Dec (was 31 in the morning; 3 Dec Rp610k Tersedia)",
      "note": "Day before the event, needs a hotel night.",
      "mode": "train",
      "priceMax": null
@@ -391,9 +391,9 @@
      "dep": "19:00",
      "arrDate": "2026-12-05",
      "arr": "03:00",
-     "price": 350000,
-     "priceNote": "about Rp350k-370k, Feb/Mar 2026 articles; not rechecked live 26 Nov (sleeper is a separate filter on tiket.com)",
-     "note": "Lie-flat seat, about 8 hours. Costs about the same as the Progo train.",
+     "price": 268966,
+     "priceNote": "LIVE tiket.com 26 Nov evening, 4 Dec, Sleeper filter: Agramas Suite Class Combi Rp268.966 (list Rp288.900). Seen departures 06:00-07:10 from Pasar Rebo, Bambu Apus, Lenteng Agung, Pulo Gebang, Pondok Pinang; arrive Jombor, Giwangan or Gamping around 16:30-17:00. Overnight sleeper slots not confirmed.",
+     "note": "Lie-flat style seat. Costs less than the Progo train. Live find is a daytime run; check tiket.com for evening slots.",
      "priceMax": null,
      "class": "Sleeper",
      "from": "Jakarta (terminal varies)"
@@ -409,7 +409,7 @@
      "arrDate": "2026-12-06",
      "arr": "03:00",
      "price": 350000,
-     "priceNote": "assumed same as going; not rechecked live 26 Nov",
+     "priceNote": "return not rechecked live 26 Nov; assume similar to going (around Rp269k-289k on tiket.com)",
      "note": "Leaves after the event ends.",
      "priceMax": null,
      "class": "Sleeper",
@@ -423,12 +423,12 @@
      "to": "Yogyakarta (drop-off)",
      "depDate": "2026-12-04",
      "dep": "19:00",
-     "arrDate": null,
-     "arr": null,
-     "price": 180000,
-     "priceMax": 350000,
-     "priceNote": "Rp180k-350k range, Aug 2026 article; not rechecked live 26 Nov",
-     "note": "10 to 13 hours. Pickup and drop-off points depend on the operator, so the departure time is a placeholder. Arrival not stated.",
+     "arrDate": "2026-12-05",
+     "arr": "07:00",
+     "price": 407001,
+     "priceMax": null,
+     "priceNote": "LIVE tiket.com 26 Nov evening, 4 Dec, Shuttle filter: BASS Trans Shuttle Rp407.001 (list Rp408.000): 18:30 Pasar Rebo, 19:00 Kelapa Gading or 21:00 Jatiwaringin, arrive Kota Yogyakarta 07:00 on 5 Dec.",
+     "note": "10 to 12.5 hours, overnight, arrives 07:00 on event day. Drop-off is Kota Yogyakarta, exact point depends on the operator.",
      "class": "Shuttle",
      "from": "Jakarta (pickup)"
     },
@@ -444,7 +444,7 @@
      "arr": null,
      "price": 180000,
      "priceMax": 350000,
-     "priceNote": "Rp180k-350k range, Aug 2026 article; not rechecked live 26 Nov",
+     "priceNote": "return not rechecked live 26 Nov; assume similar to going (around Rp407k on tiket.com)",
      "note": "10 to 13 hours. Placeholder time. Leaves after the event ends.",
      "class": "Shuttle",
      "from": "Yogyakarta (pickup)"
@@ -635,7 +635,7 @@
     "Live 26 Nov on booking.kai.id: economy seats exist on more than Progo now - Fajar Utama Yk (Rp310k), Senja Utama Yk (Rp270k-390k), Bogowonto (Rp375k), Gajahwong (Rp270k-300k), Jayakarta (Rp290k-340k) and more. Bengawan is Rp74k but sold out on both 3 and 4 Dec.",
     "Live 26 Nov: Progo 300 on 4 Dec and Progo 299 on 6 Dec are sold out; Taksaka 33 regular on 6 Dec too. Everything else checked still had seats, some under 50 left.",
     "Leaving 3 Dec instead of 4 Dec is cheaper on several trains (about Rp20k-90k less) and everything checked on 3 Dec was still available.",
-    "Bus prices are live from tiket.com for 4 and 6 Dec (Rp259k-285k seen, route listings from Rp172k). Sleeper bus and shuttle prices are still from Feb-Aug 2026 articles, not rechecked live."
+    "Bus, sleeper and shuttle prices are live from tiket.com for 4 Dec: executive bus from Rp259k, Agramas Suite Class Combi sleeper Rp268.966, BASS Trans shuttle Rp407.001 (overnight, arrives 07:00)."
    ]
   }
  ]
