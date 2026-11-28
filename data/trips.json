@@ -67,10 +67,6 @@
      "url": "https://168railway.com/gapeka-2026/ka/299-progo"
     },
     {
-     "label": "168railway: Borobudur 78F",
-     "url": "https://168railway.com/gapeka-2026/ka/78f-borobudur"
-    },
-    {
      "label": "168railway: Borobudur 77F",
      "url": "https://168railway.com/gapeka-2026/ka/77f-borobudur"
     },
@@ -336,24 +332,6 @@
      "from": "Lempuyangan",
      "verified": true,
      "soldOut": true
-    },
-    {
-     "id": "borobudur78f",
-     "dir": "out",
-     "train": "Borobudur 78F",
-     "to": "Lempuyangan",
-     "depDate": "2026-12-04",
-     "dep": "05:10",
-     "arrDate": "2026-12-04",
-     "arr": "12:41",
-     "price": null,
-     "priceNote": "not bookable on booking.kai.id: no Gambir-Lempuyangan schedule found for 3 or 4 Dec (checked live 26 Nov)",
-     "note": "Timetable sites list it, but KAI booking has no GMR-LPN seats for these dates; treat as not running or not on sale.",
-     "mode": "train",
-     "priceMax": null,
-     "class": "not found",
-     "from": "Gambir",
-     "verified": true
     },
     {
      "id": "borobudur77f",
