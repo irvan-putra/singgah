@@ -133,11 +133,22 @@ function render(){
  const excluded=trip.legs.length-legs.length, unverified=trip.legs.filter(l=>l.verified===false).length;
  $("count").textContent=ls.length+" options shown for this direction and transport selection. "+excluded+" rows excluded by the event-fit filter (sold out, arriving too late, or leaving too early); "+unverified+" options have unverified current prices/availability. Buffers: arrive at least 90 min (airport 150) before start, leave at least 60 min (airport 120) after the end. Tap a column heading to sort.";
  $("src").innerHTML=trip.sources.map(s=>`<li><a href="${s.url}">${s.label}</a></li>`).join("")+"<li>Progo 300 fare: a 4 Nov fare listing, also in the CNN list above.</li>";
+ if(window.noPush){window.noPush=false}else if(window.syncURL)window.syncURL();
 }
 fetch("data/trips.json?v="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(d=>{
  data=d;const sel=$("trip");sel.innerHTML=d.trips.map(t=>`<option value="${t.id}">${t.title}</option>`).join("");
- const want=new URLSearchParams(location.search).get("trip");if(want)sel.value=want;
- const go=()=>{trip=data.trips.find(t=>t.id===sel.value)||data.trips[0];render()};sel.onchange=go;go();
+ const Q=new URLSearchParams(location.search);const want=Q.get("trip");if(want)sel.value=want;
+ const readURL=()=>{const q=new URLSearchParams(location.search);const w=q.get("trip");if(w&&data.trips.some(t=>t.id===w))sel.value=w;
+  const all=["train","bus","shuttle","flight"];filt.dir=q.get("dir")==="back"?"back":"out";
+  const m=q.get("modes");filt.modes=m===null?all.slice():m==="none"?[]:m.split(",").filter(x=>all.includes(x));
+  const s=q.get("sort");sortKey=["train","dep","arr","price"].includes(s)?s:"price";sortDir=q.get("order")==="desc"?-1:1;
+  trip=data.trips.find(t=>t.id===sel.value)||data.trips[0]};
+ window.syncURL=()=>{const q=new URLSearchParams();q.set("trip",trip.id);q.set("dir",filt.dir);
+  if(filt.modes.length!==4)q.set("modes",filt.modes.length?filt.modes.join(","):"none");
+  q.set("sort",sortKey);q.set("order",sortDir>0?"asc":"desc");
+  const u="?"+q.toString();if(u!==location.search){history[window.firstSync?"pushState":"replaceState"](null,"",u)}window.firstSync=true};
+ readURL();window.go=()=>{trip=data.trips.find(t=>t.id===sel.value)||data.trips[0];render()};sel.onchange=window.go;
+ window.addEventListener("popstate",()=>{readURL();window.noPush=true;render()});window.go();
 }).catch(e=>{document.body.insertAdjacentText("afterbegin","Could not load data/trips.json: "+e)});
 </script>
 </body>
