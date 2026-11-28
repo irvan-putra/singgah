@@ -44,11 +44,8 @@ a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 </style>
 </head>
 <body>
-<h1>singgah</h1>
-<div class="mut">train, bus, shuttle and flight options for a trip, one sortable table. Not a booking site.</div>
 <p><label>Trip <select id="trip"></select></label></p>
 <div id="head"></div>
-<div class="warn" id="status"></div>
 <div class="ranges" id="ranges"></div>
 
 <h2>Combos</h2><div id="combos"></div>
@@ -78,7 +75,6 @@ function verdict(l){
  return leavesAfter(l)?["after event ends","ok"]:(l.depDate<trip.event.date||l.depDate===trip.event.date?["leaves before event ends","no"]:["day after","mut"])}
 function render(){
  $("head").innerHTML=`<div><b>${trip.event.name}</b>, ${dd(trip.event.date)} ${trip.event.start}-${trip.event.end} (WIB)<br><span class="mut">${trip.event.place}</span></div>`;
- $("status").textContent=trip.status;
  $("tips").innerHTML=(trip.tips||[]).map(x=>`<li>${x}</li>`).join("");
  $("book").href=trip.book||"#";
  const modes={};const label={train:"Train",bus:"Bus",shuttle:"Shuttle",flight:"Flight"};
@@ -127,7 +123,7 @@ fetch("data/trips.json").then(r=>r.json()).then(d=>{
  data=d;const sel=$("trip");sel.innerHTML=d.trips.map(t=>`<option value="${t.id}">${t.title}</option>`).join("");
  const want=new URLSearchParams(location.search).get("trip");if(want)sel.value=want;
  const go=()=>{trip=data.trips.find(t=>t.id===sel.value)||data.trips[0];render()};sel.onchange=go;go();
-}).catch(e=>{$("status").textContent="Could not load data/trips.json: "+e});
+}).catch(e=>{document.body.insertAdjacentText("afterbegin","Could not load data/trips.json: "+e)});
 </script>
 </body>
 </html>
