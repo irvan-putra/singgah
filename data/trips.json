@@ -823,6 +823,33 @@
     "Bus and shuttle fares other than the 4 Dec exec bus are from 26 Nov and not rechecked today. Flight fares are from a tiket.com route listing and not date-checked - treat both as estimates.",
     "Flying only makes sense if you value the 1h10 flight over the transfer: YIA is 40+ km from Jogja (train to Tugu Rp20k-50k, taxi Rp200k-280k). With transfers it costs more than Taksaka and takes similar total time."
    ]
+  },
+  {
+   "id": "surabayadev-12th-dec-2026",
+   "title": "jakarta to surabaya for surabayadev 12th anniversary",
+   "event": {
+    "name": "SurabayaDev 12th Anniversary (InnovateX)",
+    "date": "2026-12-11",
+    "start": "08:00",
+    "end": "15:00",
+    "place": "Graha Wiyata Lt. 9, Universitas 17 Agustus 1945 Surabaya (Jl. Semolowaru 45)",
+    "note": "times in WIB. Paid ticket via surabayadev.org (QRIS), price not checked. Event page says 11 Dec; an earlier note said 12 Dec."
+   },
+   "status": "Event details read from surabayadev.org on 28 Nov 2026 19:10 WIB. Transport to Surabaya not researched yet, so no rows or prices are shown. The venue street address comes from Untag's own contact page and is unverified for this event.",
+   "book": "https://booking.kai.id/",
+   "sources": [
+    {
+     "label": "SurabayaDev 12th Anniversary event page",
+     "url": "https://surabayadev.org/event/surabayadev-12th-anniversary"
+    },
+    {
+     "label": "Untag Surabaya: Graha Wiyata address",
+     "url": "https://bumy.untag-sby.ac.id/hubungi-kami.html"
+    }
+   ],
+   "legs": [],
+   "combos": [],
+   "tips": []
   }
  ]
 }

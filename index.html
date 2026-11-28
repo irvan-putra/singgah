@@ -93,7 +93,7 @@ function render(){
   trip.legs.filter(l=>l.dir===dir&&l.price!=null).forEach(l=>{const m=l.mode||"train",state=l.verified===true?"verified":"unverified",k=m+"|"+state,mx=l.priceMax||l.price;if(!groups[k])groups[k]={mode:m,state,lo:1/0,hi:0};groups[k].lo=Math.min(groups[k].lo,l.price);groups[k].hi=Math.max(groups[k].hi,mx)});
   return order.flatMap(m=>["verified","unverified"].filter(state=>groups[m+"|"+state]).map(state=>{const g=groups[m+"|"+state];return `${label[m]} (${state}): ${rp(g.lo,g.hi)}`})).join("<br>");
  };
- $("ranges").innerHTML=[['Going','out'],['Return','back']].map(([title,dir])=>{const lines=rangeLines(dir);return lines?`<b>${title}</b><br>${lines}`:""}).filter(Boolean).join("<br><br>");
+ $("ranges").innerHTML=[['Going','out'],['Return','back']].map(([title,dir])=>{const lines=rangeLines(dir);return lines?`<b>${title}</b><br>${lines}`:""}).filter(Boolean).join("<br><br>")if(!trip.legs.length)$("ranges").innerHTML=trip.status||"No transport options yet.";
  const byId=Object.fromEntries(trip.legs.map(l=>[l.id,l]));
  const buyFor=l=>{const m=l.mode||"train";const c=trip.combos.find(c=>c.legs.includes(l.id))||trip.combos.find(c=>c.legs.some(i=>(byId[i].mode||"train")===m));if(!c)return"";let bs=c.buy||[];
   if(m==="bus"||m==="shuttle")bs=bs.filter(b=>l.dir==="out"?!/Jogja to Jakarta|^Return/.test(b.label):!/Jakarta to Jogja|^Going/.test(b.label)||/Traveloka/.test(b.label));
@@ -134,7 +134,7 @@ function render(){
  $("count").textContent=ls.length+" options shown for this direction and transport selection. "+excluded+" rows excluded by the event-fit filter (sold out, arriving too late, or leaving too early); "+unverified+" options have unverified current prices/availability. Buffers: arrive at least 90 min (airport 150) before start, leave at least 60 min (airport 120) after the end. Tap a column heading to sort.";
  $("src").innerHTML=trip.sources.map(s=>`<li><a href="${s.url}">${s.label}</a></li>`).join("")+"<li>Progo 300 fare: a 4 Nov fare listing, also in the CNN list above.</li>";
 }
-fetch("data/trips.json?v=16bdd1b",{cache:"no-store"}).then(r=>r.json()).then(d=>{
+fetch("data/trips.json?v="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(d=>{
  data=d;const sel=$("trip");sel.innerHTML=d.trips.map(t=>`<option value="${t.id}">${t.title}</option>`).join("");
  const want=new URLSearchParams(location.search).get("trip");if(want)sel.value=want;
  const go=()=>{trip=data.trips.find(t=>t.id===sel.value)||data.trips[0];render()};sel.onchange=go;go();
