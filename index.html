@@ -21,6 +21,7 @@ select,button{font:inherit;color:inherit;background:var(--card);border:1px solid
 .mode-panel[hidden]{display:none}.mode-panel label{display:flex;align-items:center;gap:5px;font-size:.92rem}
 table{width:100%;border-collapse:collapse}
 th{text-align:left;font-size:.8rem;color:var(--mut);cursor:pointer;user-select:none;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+th:not([data-k]){cursor:default}
 th[aria-sort]::after{content:attr(data-arrow)}
 td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
 .tag{display:inline-block;font-size:.75rem;border:1px solid var(--line);border-radius:6px;padding:0 6px;margin-right:4px;color:var(--mut)}
@@ -64,7 +65,7 @@ const $=id=>document.getElementById(id);
 const rp=(n,m)=>n==null?"n/a":"Rp"+Math.round(n/1000).toLocaleString("id-ID")+"k"+(m&&m!==n?"-"+Math.round(m/1000).toLocaleString("id-ID")+"k":"");
 const dd=d=>d?new Date(d+"T00:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}):"";
 let data,trip,sortKey="price",sortDir=1,filt={dir:"out",modes:["train","bus","shuttle","flight"]},modePanelOpen=true;
-const cols=[ ["dep","Departs"],["arr","Arrives"],["price","Price"] ];
+const cols=[ ["dep","Departs"],["arr","Arrives"],["price","Price"],[null,"Note"],[null,"Buy"] ];
 const key=(l,k)=>k==="dep"?l.depDate+l.dep:k==="arr"?(l.arrDate?l.arrDate+l.arr:"9"):k==="price"?(l.price??1e12):k==="dir"?l.dir:k==="note"?l.note:l.train;
 const evStart=()=>trip.event.date+trip.event.start, evEnd=()=>trip.event.date+trip.event.end;
 const BUF={out:{ground:90,flight:150},back:{ground:60,flight:120}};
@@ -107,7 +108,7 @@ function render(){
  const sortText={train:["name A to Z","name Z to A"],dep:["earliest departure first","latest departure first"],arr:["earliest arrival first","latest arrival first"],price:["cheapest first","most expensive first"],note:["note A to Z","note Z to A"]};
  const filterText=(filt.dir==="out"?"Going options only":"Return options only")+` · ${filt.modes.length===modes.length?"all transport":filt.modes.length===0?"no transport modes selected":filt.modes.map(m=>modeName[m]||m).join(", ")+" only"}`;
  $("state").textContent=filterText+" · "+sortText[sortKey][sortDir>0?0:1]+" (tap a heading again to flip)";
- $("hr").innerHTML=cols.map(([k,t])=>`<th data-k="${k}" ${k===sortKey?`aria-sort="${sortDir>0?"ascending":"descending"}" data-arrow="${sortDir>0?" ▲":" ▼"}"`:""}>${t}</th>`).join("");
+ $("hr").innerHTML=cols.map(([k,t])=>`<th ${k?`data-k="${k}" ${k===sortKey?`aria-sort="${sortDir>0?"ascending":"descending"}" data-arrow="${sortDir>0?" ▲":" ▼"}"`:""}`:""}>${t}</th>`).join("");
  $("hr").querySelectorAll("th[data-k]").forEach(h=>h.onclick=()=>{const k=h.dataset.k;if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=1}render()});
  const cheap={};
  ["out","back"].forEach(dir=>{
@@ -125,7 +126,9 @@ function render(){
  <td class="t" data-l="Transport">${l.train} <span class="tag">${l.dir==="out"?"Going":"Return"}</span> <span class="tag">${l.mode&&l.mode!=="train"?l.mode+", ":""}${l.class}</span></td>
  <td data-l="Departs">${dd(l.depDate)} ${l.dep}</td>
  <td data-l="Arrives">${l.arrDate?dd(l.arrDate)+" "+l.arr:"not found"}</td>
- <td data-l="Price">${rp(l.price,l.priceMax)}${pb} <span class="mut">(${l.priceNote})</span></td></tr>`}).join("");
+ <td data-l="Price">${rp(l.price,l.priceMax)}${pb} <span class="mut">(${l.priceNote})</span></td>
+ <td data-l="Note"><span class="${c}">${v}.</span> ${l.note}</td>
+ <td data-l="Buy">${buyFor(l)}</td></tr>`}).join("");
  $("count").textContent=ls.length+" of "+legs.length+" options that fit the event ("+(trip.legs.length-legs.length)+" hidden: sold out, arrive too late or leave too early). Buffers: arrive at least 90 min (airport 150) before start, leave at least 60 min (airport 120) after the end. Tap a column heading to sort.";
  $("src").innerHTML=trip.sources.map(s=>`<li><a href="${s.url}">${s.label}</a></li>`).join("")+"<li>Progo 300 fare: a 4 Nov fare listing, also in the CNN list above.</li>";
 }
