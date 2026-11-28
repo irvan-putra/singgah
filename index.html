@@ -17,6 +17,8 @@ h1{font-size:1.4rem;margin:.2rem 0}h2{font-size:1.05rem;margin:1.4rem 0 .5rem}
 select,button{font:inherit;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:.6rem 0}
 .chips button{min-height:40px}.chips button[aria-pressed=true]{background:var(--acc);color:var(--bg);border-color:var(--acc)}
+.mode-panel{display:flex;flex-wrap:wrap;gap:10px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);margin:-.2rem 0 .6rem}
+.mode-panel[hidden]{display:none}.mode-panel label{display:flex;align-items:center;gap:5px;font-size:.92rem}
 table{width:100%;border-collapse:collapse}
 th{text-align:left;font-size:.8rem;color:var(--mut);cursor:pointer;user-select:none;padding:6px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
 th[aria-sort]::after{content:attr(data-arrow)}
@@ -48,6 +50,7 @@ a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 
 <h2>All transport</h2>
 <div class="chips" id="chips"></div>
+<div class="mode-panel" id="mode-panel" hidden></div>
 <p class="mut" id="state"></p>
 <table id="tbl"><thead><tr id="hr"></tr></thead><tbody id="rows"></tbody></table>
 <p class="mut" id="count"></p>
@@ -60,7 +63,7 @@ a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 const $=id=>document.getElementById(id);
 const rp=(n,m)=>n==null?"n/a":"Rp"+Math.round(n/1000).toLocaleString("id-ID")+"k"+(m&&m!==n?"-"+Math.round(m/1000).toLocaleString("id-ID")+"k":"");
 const dd=d=>d?new Date(d+"T00:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}):"";
-let data,trip,sortKey="price",sortDir=1,filt={dir:"out",early:false,priced:false,works:false};
+let data,trip,sortKey="price",sortDir=1,filt={dir:"out",modes:["train","bus","shuttle","flight"]},modePanelOpen=false;
 const cols=[ ["train","Transport"],["dep","Departs"],["arr","Arrives"],["price","Price"],["note","Note"],["buy","Buy"] ];
 const key=(l,k)=>k==="dep"?l.depDate+l.dep:k==="arr"?(l.arrDate?l.arrDate+l.arr:"9"):k==="price"?(l.price??1e12):k==="dir"?l.dir:k==="note"?l.note:l.train;
 const evStart=()=>trip.event.date+trip.event.start, evEnd=()=>trip.event.date+trip.event.end;
@@ -93,11 +96,16 @@ function render(){
  const buyFor=l=>{const m=l.mode||"train";const c=trip.combos.find(c=>c.legs.includes(l.id))||trip.combos.find(c=>c.legs.some(i=>(byId[i].mode||"train")===m));if(!c)return"";let bs=c.buy||[];
   if(m==="bus"||m==="shuttle")bs=bs.filter(b=>l.dir==="out"?!/Jogja to Jakarta|^Return/.test(b.label):!/Jakarta to Jogja|^Going/.test(b.label)||/Traveloka/.test(b.label));
   return bs.map(b=>`<a href="${b.url}">${b.label}</a>`).join(" | ")};
- const chips=[["dir","out","Going"],["dir","back","Return"]];
- $("chips").innerHTML=chips.map(([k,v,t])=>`<button aria-pressed="${filt[k]===v}" data-k="${k}" data-v="${v}">${t}</button>`).join("");
- $("chips").querySelectorAll("button").forEach(b=>b.onclick=()=>{const k=b.dataset.k,v=b.dataset.v;if(k==="dir")filt.dir=v;else filt[k]=!filt[k];render()});
+ const modes=[...new Set(trip.legs.map(l=>l.mode||"train"))].sort((a,b)=>["train","bus","shuttle","flight"].indexOf(a)-["train","bus","shuttle","flight"].indexOf(b));
+ const modeName={train:"Train",bus:"Bus",shuttle:"Shuttle",flight:"Flight"};
+ const chips=[["dir","out","Going"],["dir","back","Return"],["mode","toggle",`Transport${filt.modes.length<modes.length?` (${filt.modes.length})`:""}`]];
+ $("chips").innerHTML=chips.map(([k,v,t])=>`<button aria-pressed="${k==="mode"?modePanelOpen:filt.dir===v}" data-k="${k}" data-v="${v}">${t}</button>`).join("");
+ $("chips").querySelectorAll("button").forEach(b=>b.onclick=()=>{if(b.dataset.k==="dir")filt.dir=b.dataset.v;else modePanelOpen=!modePanelOpen;render()});
+ const panel=$("mode-panel");panel.hidden=!modePanelOpen;
+ panel.innerHTML=modes.map(m=>`<label><input type="checkbox" data-mode="${m}" ${filt.modes.includes(m)?"checked":""}> ${modeName[m]||m}</label>`).join("");
+ panel.querySelectorAll("input").forEach(c=>c.onchange=()=>{filt.modes=c.checked?[...filt.modes,c.dataset.mode]:filt.modes.filter(m=>m!==c.dataset.mode);render()});
  const sortText={train:["name A to Z","name Z to A"],dep:["earliest departure first","latest departure first"],arr:["earliest arrival first","latest arrival first"],price:["cheapest first","most expensive first"],note:["note A to Z","note Z to A"]};
- const filterText=filt.dir==="out"?"Going options only":"Return options only";
+ const filterText=(filt.dir==="out"?"Going options only":"Return options only")+` · ${filt.modes.length===modes.length?"all transport":filt.modes.length===0?"no transport modes selected":filt.modes.map(m=>modeName[m]||m).join(", ")+" only"}`;
  $("state").textContent=filterText+" · "+sortText[sortKey][sortDir>0?0:1]+" (tap a heading again to flip)";
  $("hr").innerHTML=cols.map(([k,t])=>`<th data-k="${k}" ${k===sortKey?`aria-sort="${sortDir>0?"ascending":"descending"}" data-arrow="${sortDir>0?" ▲":" ▼"}"`:""}>${t}</th>`).join("");
  $("hr").querySelectorAll("th").forEach(h=>h.onclick=()=>{const k=h.dataset.k;if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=1}render()});
@@ -108,7 +116,7 @@ function render(){
   if(vs.length)cheap[dir+"-any"]=vs.reduce((a,b)=>a.price<b.price?a:b).id;
   if(tr.length)cheap[dir+"-train"]=tr.reduce((a,b)=>a.price<b.price?a:b).id;
  });
- let ls=legs.filter(l=>(filt.dir==="all"||l.dir===filt.dir)&&(!filt.priced||l.price!=null));
+ let ls=legs.filter(l=>l.dir===filt.dir&&filt.modes.includes(l.mode||"train"));
  ls.sort((a,b)=>{const x=key(a,sortKey),y=key(b,sortKey);return (x>y?1:x<y?-1:0)*sortDir});
  $("rows").innerHTML=ls.map(l=>{const[v,c]=verdict(l);
   const isC=l.id===cheap[l.dir+"-any"],isCT=l.id===cheap[l.dir+"-train"]&&!isC;
