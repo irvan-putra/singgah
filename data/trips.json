@@ -314,7 +314,7 @@
      "note": "Leaves 50 minutes after the event ends. Tight from Mlati to Tugu, check the travel time. Home at 01:26.",
      "mode": "train",
      "priceMax": 480000,
-     "class": "Executive",
+     "class": "Economy / Executive",
      "from": "Yogyakarta",
      "verified": true
     },
