@@ -64,7 +64,7 @@ const $=id=>document.getElementById(id);
 const rp=(n,m)=>n==null?"n/a":"Rp"+Math.round(n/1000).toLocaleString("id-ID")+"k"+(m&&m!==n?"-"+Math.round(m/1000).toLocaleString("id-ID")+"k":"");
 const dd=d=>d?new Date(d+"T00:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}):"";
 let data,trip,sortKey="price",sortDir=1,filt={dir:"out",modes:["train","bus","shuttle","flight"]},modePanelOpen=true;
-const cols=[ ["train","Transport"],["dep","Departs"],["arr","Arrives"],["price","Price"] ];
+const cols=[ [null,"Transport"],["dep","Departs"],["arr","Arrives"],["price","Price"] ];
 const key=(l,k)=>k==="dep"?l.depDate+l.dep:k==="arr"?(l.arrDate?l.arrDate+l.arr:"9"):k==="price"?(l.price??1e12):k==="dir"?l.dir:k==="note"?l.note:l.train;
 const evStart=()=>trip.event.date+trip.event.start, evEnd=()=>trip.event.date+trip.event.end;
 const BUF={out:{ground:90,flight:150},back:{ground:60,flight:120}};
@@ -107,8 +107,8 @@ function render(){
  const sortText={train:["name A to Z","name Z to A"],dep:["earliest departure first","latest departure first"],arr:["earliest arrival first","latest arrival first"],price:["cheapest first","most expensive first"],note:["note A to Z","note Z to A"]};
  const filterText=(filt.dir==="out"?"Going options only":"Return options only")+` · ${filt.modes.length===modes.length?"all transport":filt.modes.length===0?"no transport modes selected":filt.modes.map(m=>modeName[m]||m).join(", ")+" only"}`;
  $("state").textContent=filterText+" · "+sortText[sortKey][sortDir>0?0:1]+" (tap a heading again to flip)";
- $("hr").innerHTML=cols.map(([k,t])=>`<th data-k="${k}" ${k===sortKey?`aria-sort="${sortDir>0?"ascending":"descending"}" data-arrow="${sortDir>0?" ▲":" ▼"}"`:""}>${t}</th>`).join("");
- $("hr").querySelectorAll("th").forEach(h=>h.onclick=()=>{const k=h.dataset.k;if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=1}render()});
+ $("hr").innerHTML=cols.map(([k,t])=>`<th ${k?`data-k="${k}" ${k===sortKey?`aria-sort="${sortDir>0?"ascending":"descending"}" data-arrow="${sortDir>0?" ▲":" ▼"}"`:""}`:""}>${t}</th>`).join("");
+ $("hr").querySelectorAll("th[data-k]").forEach(h=>h.onclick=()=>{const k=h.dataset.k;if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=1}render()});
  const cheap={};
  ["out","back"].forEach(dir=>{
   const vs=legs.filter(l=>l.dir===dir&&l.price!=null&&!l.soldOut&&l.verified);
