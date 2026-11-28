@@ -28,9 +28,6 @@ td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
 .badge.unver{border:1px solid var(--warn);color:var(--warn)}
 tr.cheapest td{background:color-mix(in srgb,var(--acc) 10%,transparent)}
 .ok{color:var(--acc)}.no{color:var(--bad)}
-.combo{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;margin:.5rem 0}
-.combo.cheapest{border:2px solid var(--acc)}
-.combo b{display:block}
 @media(max-width:640px){
  table,thead,tbody,tr,td{display:block}
  thead tr{display:flex;flex-wrap:wrap;gap:4px;border:0;background:none;padding:0}
@@ -48,7 +45,6 @@ a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 <div id="head"></div>
 <div class="ranges" id="ranges"></div>
 
-<h2>Combos</h2><div id="combos"></div>
 <ul id="tips" class="mut"></ul>
 
 <h2>All transport</h2>
@@ -65,46 +61,48 @@ const $=id=>document.getElementById(id);
 const rp=(n,m)=>n==null?"n/a":"Rp"+Math.round(n/1000).toLocaleString("id-ID")+"k"+(m&&m!==n?"-"+Math.round(m/1000).toLocaleString("id-ID")+"k":"");
 const dd=d=>d?new Date(d+"T00:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}):"";
 let data,trip,sortKey="dep",sortDir=1,filt={dir:"all",early:false,priced:false,works:false};
-const cols=[["train","Transport"],["dir","Dir"],["dep","Departs"],["arr","Arrives"],["price","Price"],["note","Note"]];
+const cols=[["train","Transport"],["dir","Dir"],["dep","Departs"],["arr","Arrives"],["price","Price"],["note","Note"],["buy","Buy"]];
 const key=(l,k)=>k==="dep"?l.depDate+l.dep:k==="arr"?(l.arrDate?l.arrDate+l.arr:"9"):k==="price"?(l.price??1e12):k==="dir"?l.dir:k==="note"?l.note:l.train;
 const evStart=()=>trip.event.date+trip.event.start, evEnd=()=>trip.event.date+trip.event.end;
-const arrivesBefore=l=>l.arrDate&&(l.arrDate+l.arr)<=evStart();
-const leavesAfter=l=>(l.depDate+l.dep)>=evEnd();
+const BUF={out:{ground:90,flight:150},back:{ground:60,flight:120}};
+const mins=t=>{const[h,m]=t.split(":").map(Number);return h*60+m};
+const addm=(d,t,m)=>{const x=new Date(d+"T00:00:00");x.setMinutes(mins(t)+m);const p=n=>String(n).padStart(2,"0");return x.getFullYear()+"-"+p(x.getMonth()+1)+"-"+p(x.getDate())+p(x.getHours())+":"+p(x.getMinutes())};
+const bufOf=l=>BUF[l.dir][(l.mode||"train")==="flight"?"flight":"ground"];
 function verdict(l){
- if(l.dir==="out"){if(!l.arrDate)return["arrival unknown","mut"];return arrivesBefore(l)?["arrives before event","ok"]:(l.arrDate<trip.event.date?["day before","mut"]:["arrives after start","no"])}
- return leavesAfter(l)?["after event ends","ok"]:(l.depDate<trip.event.date||l.depDate===trip.event.date?["leaves before event ends","no"]:["day after","mut"])}
+ if(l.soldOut)return["sold out","no"];
+ if(l.dir==="out"){if(!l.arrDate)return["arrival unknown","mut"];
+  if(l.arrDate<trip.event.date)return["day before","mut"];
+  const need=addm(trip.event.date,trip.event.start,-bufOf(l));
+  return (l.arrDate+l.arr)<=need?["arrives in time","ok"]:["too late for the start","no"]}
+ if(l.depDate>trip.event.date)return["day after","mut"];
+ const need=addm(trip.event.date,trip.event.end,bufOf(l));
+ return (l.depDate+l.dep)>=need?["leaves after the event","ok"]:["leaves too early","no"]}
 function render(){
  $("head").innerHTML=`<div><b>${trip.event.name}</b>, ${dd(trip.event.date)} ${trip.event.start}-${trip.event.end} (WIB)<br><span class="mut">${trip.event.place}</span></div>`;
  $("tips").innerHTML=(trip.tips||[]).map(x=>`<li>${x}</li>`).join("");
  $("book").href=trip.book||"#";
  const modes={};const label={train:"Train",bus:"Bus",shuttle:"Shuttle",flight:"Flight"};
- trip.legs.forEach(l=>{const m=l.mode||"train";if(l.price==null)return;const mx=l.priceMax||l.price;(modes[m]=modes[m]||{lo:1/0,hi:0,unv:false});modes[m].lo=Math.min(modes[m].lo,l.price);modes[m].hi=Math.max(modes[m].hi,mx);if(!l.verified)modes[m].unv=true});
+ const legs=trip.legs.filter(l=>verdict(l)[1]!=="no");
+ legs.forEach(l=>{const m=l.mode||"train";if(l.price==null)return;const mx=l.priceMax||l.price;(modes[m]=modes[m]||{lo:1/0,hi:0,unv:false});modes[m].lo=Math.min(modes[m].lo,l.price);modes[m].hi=Math.max(modes[m].hi,mx);if(!l.verified)modes[m].unv=true});
  const order=["train","bus","shuttle","flight"];
  $("ranges").innerHTML="<b>Price ranges, one way:</b> "+order.filter(m=>modes[m]).map(m=>`${label[m]}: ${rp(modes[m].lo,modes[m].hi)}${modes[m].unv?' <span class="badge unver">includes unverified fares</span>':""}`).join(" &middot; ")+'<br><span class="mut">Ranges come from the fares in the table below. "Unverified" means not re-checked live in the latest recheck; see each fare note for its date.</span>';
  const byId=Object.fromEntries(trip.legs.map(l=>[l.id,l]));
- const cinfo=trip.combos.map(c=>{
-  const ls=c.legs.map(i=>byId[i]);const ok=ls.every(l=>l.price!=null),tot=ok?ls.reduce((s,l)=>s+l.price,0):null,mx=ok?ls.reduce((s,l)=>s+(l.priceMax||l.price),0):null;
-  const sold=ls.some(l=>l.soldOut),allTrain=ls.every(l=>(l.mode||"train")==="train");
-  return{c,ls,tot,mx,sold,allTrain}});
- const avail=cinfo.filter(x=>x.tot!=null&&!x.sold);
- const cheapAll=avail.length?avail.reduce((a,b)=>a.tot<b.tot?a:b):null;
- const trains=avail.filter(x=>x.allTrain),cheapTrain=trains.length?trains.reduce((a,b)=>a.tot<b.tot?a:b):null;
- $("combos").innerHTML=cinfo.map(({c,ls,tot,mx,sold})=>{
-  const badges=(sold?'<span class="badge soldout">sold out</span>':"")+(cheapAll&&c===cheapAll.c?'<span class="badge cheapest">cheapest</span>':"")+(cheapTrain&&c===cheapTrain.c&&(!cheapAll||c!==cheapAll.c)?'<span class="badge cheapest">cheapest train</span>':"");
-  return `<div class="combo${cheapAll&&c===cheapAll.c?" cheapest":""}"><b>${c.name}${badges}</b>${ls.map(l=>`${l.train} ${dd(l.depDate)} ${l.dep}`).join(" &rarr; ")}${c.alt?` (or ${c.alt.map(i=>byId[i].train+" "+dd(byId[i].depDate)).join(", ")})`:""}<br><span>Fare estimate: ${tot==null?"n/a (fares not found)":"about "+rp(tot,mx)}</span><br><span class="mut">${c.note}</span><br>Buy: ${(c.buy||[]).map(b=>`<a href="${b.url}">${b.label}</a>`).join(" | ")||"no verified buy link found"}<br><span class="mut">${c.buyNote||""}</span></div>`}).join("");
- const chips=[["dir","all","All"],["dir","out","Going"],["dir","back","Return"],["early",true,"Arrives before event"],["priced",true,"Has a fare"],["works",true,"Hide ones that miss the event"]];
+ const buyFor=l=>{const c=trip.combos.find(c=>c.legs.includes(l.id));if(!c)return"";const m=l.mode||"train";let bs=c.buy||[];
+  if(m==="bus"||m==="shuttle")bs=bs.filter(b=>l.dir==="out"?!/Jogja to Jakarta|^Return/.test(b.label):!/Jakarta to Jogja|^Going/.test(b.label)||/Traveloka/.test(b.label));
+  return bs.map(b=>`<a href="${b.url}">${b.label}</a>`).join(" | ")};
+ const chips=[["dir","all","All"],["dir","out","Going"],["dir","back","Return"],["priced",true,"Has a fare"]];
  $("chips").innerHTML=chips.map(([k,v,t])=>`<button aria-pressed="${filt[k]===v}" data-k="${k}" data-v="${v}">${t}</button>`).join("");
  $("chips").querySelectorAll("button").forEach(b=>b.onclick=()=>{const k=b.dataset.k,v=b.dataset.v;if(k==="dir")filt.dir=v;else filt[k]=!filt[k];render()});
  $("hr").innerHTML=cols.map(([k,t])=>`<th data-k="${k}" ${k===sortKey?`aria-sort="${sortDir>0?"ascending":"descending"}" data-arrow="${sortDir>0?" ▲":" ▼"}"`:""}>${t}</th>`).join("");
  $("hr").querySelectorAll("th").forEach(h=>h.onclick=()=>{const k=h.dataset.k;if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=1}render()});
  const cheap={};
  ["out","back"].forEach(dir=>{
-  const vs=trip.legs.filter(l=>l.dir===dir&&l.price!=null&&!l.soldOut&&l.verified);
+  const vs=legs.filter(l=>l.dir===dir&&l.price!=null&&!l.soldOut&&l.verified);
   const tr=vs.filter(l=>(l.mode||"train")==="train");
   if(vs.length)cheap[dir+"-any"]=vs.reduce((a,b)=>a.price<b.price?a:b).id;
   if(tr.length)cheap[dir+"-train"]=tr.reduce((a,b)=>a.price<b.price?a:b).id;
  });
- let ls=trip.legs.filter(l=>(filt.dir==="all"||l.dir===filt.dir)&&(!filt.early||arrivesBefore(l))&&(!filt.priced||l.price!=null)&&(!filt.works||verdict(l)[1]!=="no"));
+ let ls=legs.filter(l=>(filt.dir==="all"||l.dir===filt.dir)&&(!filt.priced||l.price!=null));
  ls.sort((a,b)=>{const x=key(a,sortKey),y=key(b,sortKey);return (x>y?1:x<y?-1:0)*sortDir});
  $("rows").innerHTML=ls.map(l=>{const[v,c]=verdict(l);
   const isC=l.id===cheap[l.dir+"-any"],isCT=l.id===cheap[l.dir+"-train"]&&!isC;
@@ -115,8 +113,9 @@ function render(){
  <td data-l="Departs">${dd(l.depDate)} ${l.dep}</td>
  <td data-l="Arrives">${l.arrDate?dd(l.arrDate)+" "+l.arr:"not found"}</td>
  <td data-l="Price">${rp(l.price,l.priceMax)}${pb} <span class="mut">(${l.priceNote})</span></td>
- <td data-l="Note"><span class="${c}">${v}.</span> ${l.note}</td></tr>`}).join("");
- $("count").textContent=ls.length+" of "+trip.legs.length+" shown. Tap a column heading to sort.";
+ <td data-l="Note"><span class="${c}">${v}.</span> ${l.note}</td>
+ <td data-l="Buy">${buyFor(l)}</td></tr>`}).join("");
+ $("count").textContent=ls.length+" of "+legs.length+" options that fit the event ("+(trip.legs.length-legs.length)+" hidden: sold out, arrive too late or leave too early). Buffers: arrive at least 90 min (airport 150) before start, leave at least 60 min (airport 120) after the end. Tap a column heading to sort.";
  $("src").innerHTML=trip.sources.map(s=>`<li><a href="${s.url}">${s.label}</a></li>`).join("")+"<li>Progo 300 fare: a 4 Nov fare listing, also in the CNN list above.</li>";
 }
 fetch("data/trips.json").then(r=>r.json()).then(d=>{
