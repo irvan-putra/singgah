@@ -11,7 +11,7 @@
     "place": "Garuda Spark Innovation Hub, Mlati, Sleman",
     "note": "times in WIB"
    },
-   "status": "Partial live recheck 28 Nov 2026 18:55 WIB. Current date-specific prices verified: executive bus going (but daytime and too late for event), flights both directions. Return bus date-specific search yielded no listings; its schedule/fare remain unverified. KAI fares/schedules/availability remain prior historical checks only, not reverified live.",
+   "status": "Recheck 28 Nov 2026 20:10 WIB. Verified: Sumber Alam, Annura and Agramas buses going (Traveloka and tiket.com listings), flights both ways. Onward travel from Temon to Mlati is an unverified estimate. Return bus times and KAI train fares are not freshly verified.",
    "book": "https://booking.kai.id/",
    "sources": [
     {
@@ -105,6 +105,18 @@
     {
      "label": "tiket.com exact search: Jakarta-Yogyakarta bus, 4 Dec 2026",
      "url": "https://www.tiket.com/id-id/bus-travel/search?origin=63d0b5bd2cbd5656536ba09f&destination=63d0b5bb2cbd5656536b9ec4&tripType=oneway&journeyType=depart&departureDate=2026-12-04&adult=1"
+    },
+    {
+     "label": "Traveloka: Jakarta to Yogyakarta bus, 4 Dec (read 28 Nov 20:01 WIB)",
+     "url": "https://www.traveloka.com/id-id/bus-and-train/search?st=102813.107442&stn=Jakarta.Yogyakarta&stt=CITY_GEO.CITY_GEO&dt=4-12-2026.null&ps=1.0.0&tab=BUS&initialTab=BUS"
+    },
+    {
+     "label": "Traveloka: Yogyakarta to Jakarta bus, 5 Dec (read 28 Nov 20:10 WIB)",
+     "url": "https://www.traveloka.com/id-id/bus-and-train/search?st=107442.102813&stn=Yogyakarta.Jakarta&stt=CITY_GEO.CITY_GEO&dt=5-12-2026.null&ps=1.0.0&tab=BUS&initialTab=BUS"
+    },
+    {
+     "label": "Kompas: Prameks and KA Bandara YIA first/last trains from 1 Dec",
+     "url": "https://travel.kompas.com/read/2026/11/20/163100127/kereta-prameks-akan-diperpanjang-sampai-kebumen-mulai-1-desember-2026"
     }
    ],
    "legs": [
@@ -597,6 +609,60 @@
      "priceNote": "Verified on tiket.com 28 Nov 2026 18:55 WIB: 6 Dec YIA→CGK direct listings IDR 1,250,036–1,448,936. Lowest: Super Air Jet 10:20–11:30, 10 kg baggage.",
      "note": "Lowest-priced direct flight on the day after the event. Airport-to-home transfer is additional.",
      "verified": true
+    },
+    {
+     "id": "sa685-out",
+     "mode": "bus",
+     "dir": "out",
+     "train": "Sumber Alam 685 (Irvan's ticket, bought)",
+     "class": "Bus",
+     "from": "Pondok Pinang (Agen Sumber Alam)",
+     "to": "Sumber Alam Temon (Kulon Progo)",
+     "depDate": "2026-12-04",
+     "dep": "18:25",
+     "arrDate": "2026-12-05",
+     "arr": "06:20",
+     "price": 170000,
+     "priceMax": null,
+     "verified": true,
+     "priceNote": "Irvan bought this ticket on Traveloka (he reported it). Traveloka listing also shows Rp170,000, read 28 Nov 2026 20:01 WIB.",
+     "note": "Your ticket. Overnight, 11h55. Arrives 06:20 at Temon, far from the venue. Onward to Garuda Spark (Mlati) is not covered by the ticket and is unverified: Temon is about 60 km from Mlati. Options (estimates): taxi or Grab straight to Mlati, roughly 1.5 h, price not checked; or a short ride to YIA station, KA Bandara YIA (first train from YIA 05:17, last 21:30, per Kompas 20 Nov 2026) to Tugu, then Trans Jogja 8 to Terminal Jombor and a 10 min walk (the Tugu to venue part took about 1 h in Maps). The train route is too tight for 09:00."
+    },
+    {
+     "id": "sa685-gamping",
+     "mode": "bus",
+     "dir": "out",
+     "train": "Sumber Alam, same 18:25 bus, drop at Gamping",
+     "class": "Bus",
+     "from": "Pondok Pinang (Agen Sumber Alam)",
+     "to": "Agen Sumber Alam Gamping (Sleman)",
+     "depDate": "2026-12-04",
+     "dep": "18:25",
+     "arrDate": "2026-12-05",
+     "arr": "06:50",
+     "price": 170000,
+     "priceMax": null,
+     "verified": true,
+     "priceNote": "Traveloka listing, Rp170,000, read 28 Nov 2026 20:01 WIB.",
+     "note": "Same departure as your ticket but dropping at Gamping, about 10 km from Mlati. Arrives 06:50. Onward ride to the venue (taxi or Trans Jogja) not checked. Other drop-offs on the same listing: Sentolo 06:35, Pedes 06:44, Giwangan 07:00, Pool Sumber Alam Yogyakarta 07:05."
+    },
+    {
+     "id": "annura-2115-jombor",
+     "mode": "bus",
+     "dir": "out",
+     "train": "Annura Executive 21:15",
+     "class": "Executive",
+     "from": "Terminal Pulo Gebang",
+     "to": "Jombor (Yogyakarta)",
+     "depDate": "2026-12-04",
+     "dep": "21:15",
+     "arrDate": "2026-12-05",
+     "arr": "05:00",
+     "price": 284601,
+     "priceMax": null,
+     "verified": true,
+     "priceNote": "tiket.com listing 28 Nov 2026 20:00 WIB: IDR 284,601 (list IDR 285,600). Other drop-offs: Gamping 05:10, Yogyakarta 05:20, Giwangan 05:30, Prambanan 04:50.",
+     "note": "Arrives very early (05:00 at Jombor, a 10 min walk from the venue per Maps), so there are about 4 h before the 09:00 start. Costs about Rp115k more than Sumber Alam."
     }
    ],
    "combos": [
@@ -814,6 +880,41 @@
       }
      ],
      "buyNote": "Date-specific economy searches; recheck final price and airport before booking."
+    },
+    {
+     "id": "K",
+     "name": "K: Sumber Alam bus there (Traveloka)",
+     "legs": [
+      "sa685-out",
+      "sa685-gamping"
+     ],
+     "note": "Listing read 28 Nov 2026 20:01 WIB.",
+     "buy": [
+      {
+       "label": "Going: Traveloka Jakarta to Yogyakarta, 4 Dec",
+       "url": "https://www.traveloka.com/id-id/bus-and-train/search?st=102813.107442&stn=Jakarta.Yogyakarta&stt=CITY_GEO.CITY_GEO&dt=4-12-2026.null&ps=1.0.0&tab=BUS&initialTab=BUS"
+      },
+      {
+       "label": "Return: Traveloka Yogyakarta to Jakarta, 5 Dec",
+       "url": "https://www.traveloka.com/id-id/bus-and-train/search?st=107442.102813&stn=Yogyakarta.Jakarta&stt=CITY_GEO.CITY_GEO&dt=5-12-2026.null&ps=1.0.0&tab=BUS&initialTab=BUS"
+      }
+     ],
+     "buyNote": "Traveloka is a reseller. Check the pickup point and drop-off on the ticket."
+    },
+    {
+     "id": "L",
+     "name": "L: Annura bus there (tiket.com)",
+     "legs": [
+      "annura-2115-jombor"
+     ],
+     "note": "Listing read 28 Nov 2026 20:00 WIB.",
+     "buy": [
+      {
+       "label": "Going: tiket.com Jakarta to Jogja, 4 Dec (Annura 21:15)",
+       "url": "https://www.tiket.com/id-id/bus-travel/search?origin=63d0b5bd2cbd5656536ba09f&destination=63d0b5bb2cbd5656536b9ec4&tripType=oneway&journeyType=depart&departureDate=2026-12-04&adult=1"
+      }
+     ],
+     "buyNote": "tiket.com is a reseller."
     }
    ],
    "tips": [
@@ -821,7 +922,9 @@
     "Progo is still sold out on both 4 and 6 Dec. Bengawan (Rp74k) sold out too. Taksaka 34 and 32 on 4 Dec are down to 8 seats each - if you want the Taksaka overnight, buy soon.",
     "Singasari 149 on 5 Dec has seats again (economy Rp360k, was sold out on 26 Nov). Batavia 125 economy Rp380k overnight to Gambir is another cheap way home.",
     "Bus and shuttle fares other than the 4 Dec exec bus are from 26 Nov and not rechecked today. Flight fares are from a tiket.com route listing and not date-checked - treat both as estimates.",
-    "Flying only makes sense if you value the 1h10 flight over the transfer: YIA is 40+ km from Jogja (train to Tugu Rp20k-50k, taxi Rp200k-280k). With transfers it costs more than Taksaka and takes similar total time."
+    "Flying only makes sense if you value the 1h10 flight over the transfer: YIA is 40+ km from Jogja (train to Tugu Rp20k-50k, taxi Rp200k-280k). With transfers it costs more than Taksaka and takes similar total time.",
+    "Bus coverage fix (28 Nov 20:10 WIB): we had only read tiket.com, whose list shows about 20 rows per search, so evening buses like Sumber Alam (18:25, Pondok Pinang, Rp170k on Traveloka) never appeared. Traveloka's list also shows only about 20 rows, so other operators can still be missing.",
+    "Return by bus on 5 Dec: the Traveloka Sumber Alam rows visible leave Yogyakarta at 15:00-15:30, before the event ends at 17:00. Evening return buses were not seen in the first 20 rows, so they are unverified."
    ]
   },
   {

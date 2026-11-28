@@ -41,6 +41,10 @@ tr.cheapest td{background:color-mix(in srgb,var(--acc) 10%,transparent)}
  td[data-l]::before{content:attr(data-l) ": ";color:var(--mut);font-size:.8rem}
  td.t{font-weight:600;font-size:1.05rem}
 }
+.jmap{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:8px;margin:.5rem 0}
+.jmap svg{width:100%;height:auto;display:block;font-family:system-ui,sans-serif}
+.jmap .ln{stroke-width:5;fill:none;stroke-linecap:round}.jmap .dot{fill:var(--card);stroke:var(--fg);stroke-width:3}
+.jmap text{fill:var(--fg);font-size:13px}.jmap .s{fill:var(--mut);font-size:11px}.jmap .dash{stroke-dasharray:2 9}
 a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 </style>
 </head>
@@ -60,6 +64,38 @@ a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 <h2>Sources</h2><ul id="src" class="mut"></ul>
 <p><a id="book" href="https://booking.kai.id/">Check trains on KAI Access (booking.kai.id)</a></p>
 
+<h2 id="jogja-map">Jogja map: from the bus drop-off to the venue</h2>
+<div class="jmap"><svg viewBox="0 0 360 410" role="img" aria-labelledby="jm-t jm-d">
+<title id="jm-t">Schematic route from Temon to Garuda Spark Innovation Hub</title>
+<desc id="jm-d">Schematic, not to scale. Read downward: Temon, YIA station, Yogyakarta station, Trans Jogja stop, Terminal Jombor, Garuda Spark Innovation Hub in Mlati, Sleman.</desc>
+<path class="ln dash" d="M30 30V100" stroke="#7f8c8d"/>
+<path class="ln" d="M30 100V170" stroke="#c0392b"/>
+<path class="ln dash" d="M30 170V240" stroke="#7f8c8d"/>
+<path class="ln" d="M30 240V310" stroke="#2e86c1"/>
+<path class="ln dash" d="M30 310V380" stroke="#7f8c8d"/>
+<circle class="dot" cx="30" cy="30" r="8"/>
+<text x="52" y="34">Temon (bus drop 06:20, your ticket)</text>
+<circle class="dot" cx="30" cy="100" r="8"/>
+<text x="52" y="104">YIA station</text>
+<text class="s" x="52" y="68">taxi or ojek from Temon, about 15 to 25 min</text>
+<text class="s" x="52" y="81">(estimate)</text>
+<circle class="dot" cx="30" cy="170" r="8"/>
+<text x="52" y="174">Stasiun Yogyakarta (Tugu)</text>
+<text class="s" x="52" y="138">KA Bandara YIA, first train from YIA 05:17. Or</text>
+<text class="s" x="52" y="151">Prameks from Wojo or Sentolo</text>
+<circle class="dot" cx="30" cy="240" r="8"/>
+<text x="52" y="244">Trans Jogja stop near Tugu</text>
+<text class="s" x="52" y="208">walk 4 min</text>
+<circle class="dot" cx="30" cy="310" r="8"/>
+<text x="52" y="314">Terminal Jombor</text>
+<text class="s" x="52" y="278">Trans Jogja 8, 06:22 to 06:59 (scheduled), 19</text>
+<text class="s" x="52" y="291">stops</text>
+<circle class="dot" cx="30" cy="380" r="10" style="fill:var(--acc)"/>
+<text x="52" y="384">Garuda Spark Innovation Hub, Mlati</text>
+<text class="s" x="52" y="348">walk 10 min (700 m), arrive about 07:08 on</text>
+<text class="s" x="52" y="361">that schedule</text>
+</svg>
+<p class="mut" style="margin:.4rem 0 0">Schematic, not to scale; dotted lines are walks or taxi rides. Other ways: if you get off the Sumber Alam bus at Gamping (06:50) instead of Temon, the venue is about 10 km away by taxi (estimate). The Annura bus can drop at Jombor (05:00), a 10 min walk away. Times on Prameks and Trans Jogja 8 are scheduled times from Irvan's Google Maps screenshots (the screenshots show no date), not live. Temon to YIA station and the Gamping taxi are estimates, not checked. KA Bandara YIA first and last trains are from <a href="https://travel.kompas.com/read/2026/11/20/163100127/kereta-prameks-akan-diperpanjang-sampai-kebumen-mulai-1-desember-2026">Kompas, 20 Nov 2026</a>. Layout style adapted from <a href="https://github.com/irvan-putra/tuju">Tuju</a> (AGPL-3.0).</p></div>
 <footer>Built with AI assistance (Instinct and others). Each row labels whether its current details were live-checked; unverified rows rely on older listings or estimates. Open source, AGPL-3.0: <a href="https://github.com/irvan-putra/singgah">github.com/irvan-putra/singgah</a>.</footer>
 <script>
 const $=id=>document.getElementById(id);
