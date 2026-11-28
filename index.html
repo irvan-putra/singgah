@@ -114,7 +114,7 @@ function render(){
   const isC=l.id===cheap[l.dir+"-any"],isCT=l.id===cheap[l.dir+"-train"]&&!isC;
   const pb=(l.soldOut?'<span class="badge soldout">sold out</span>':"")+(isC?'<span class="badge cheapest">cheapest</span>':"")+(isCT?'<span class="badge cheapest">cheapest train</span>':"")+(l.verified===false?'<span class="badge unver">unverified</span>':"");
   return `<tr class="${isC||isCT?"cheapest":""}">
- <td class="t" data-l="Transport">${l.train} <span class="tag">${l.mode&&l.mode!=="train"?l.mode+", ":""}${l.class}</span></td>
+ <td class="t" data-l="Transport">${l.train} <span class="tag">${l.dir==="out"?"Going":"Return"}</span> <span class="tag">${l.mode&&l.mode!=="train"?l.mode+", ":""}${l.class}</span></td>
  <td data-l="Departs">${dd(l.depDate)} ${l.dep}</td>
  <td data-l="Arrives">${l.arrDate?dd(l.arrDate)+" "+l.arr:"not found"}</td>
  <td data-l="Price">${rp(l.price,l.priceMax)}${pb} <span class="mut">(${l.priceNote})</span></td>
