@@ -60,8 +60,8 @@ a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 const $=id=>document.getElementById(id);
 const rp=(n,m)=>n==null?"n/a":"Rp"+Math.round(n/1000).toLocaleString("id-ID")+"k"+(m&&m!==n?"-"+Math.round(m/1000).toLocaleString("id-ID")+"k":"");
 const dd=d=>d?new Date(d+"T00:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}):"";
-let data,trip,sortKey="dep",sortDir=1,filt={dir:"all",early:false,priced:false,works:false};
-const cols=[["train","Transport"],["dir","Dir"],["dep","Departs"],["arr","Arrives"],["price","Price"],["note","Note"],["buy","Buy"]];
+let data,trip,sortKey="price",sortDir=1,filt={dir:"out",early:false,priced:false,works:false};
+const cols=[ ["train","Transport"],["dep","Departs"],["arr","Arrives"],["price","Price"],["note","Note"],["buy","Buy"] ];
 const key=(l,k)=>k==="dep"?l.depDate+l.dep:k==="arr"?(l.arrDate?l.arrDate+l.arr:"9"):k==="price"?(l.price??1e12):k==="dir"?l.dir:k==="note"?l.note:l.train;
 const evStart=()=>trip.event.date+trip.event.start, evEnd=()=>trip.event.date+trip.event.end;
 const BUF={out:{ground:90,flight:150},back:{ground:60,flight:120}};
@@ -96,7 +96,7 @@ function render(){
  const chips=[["dir","all","All"],["dir","out","Going"],["dir","back","Return"],["priced",true,"Has a fare"]];
  $("chips").innerHTML=chips.map(([k,v,t])=>`<button aria-pressed="${filt[k]===v}" data-k="${k}" data-v="${v}">${t}</button>`).join("");
  $("chips").querySelectorAll("button").forEach(b=>b.onclick=()=>{const k=b.dataset.k,v=b.dataset.v;if(k==="dir")filt.dir=v;else filt[k]=!filt[k];render()});
- const sortText={train:["name A to Z","name Z to A"],dir:["return options first","going options first"],dep:["earliest departure first","latest departure first"],arr:["earliest arrival first","latest arrival first"],price:["cheapest first","most expensive first"],note:["note A to Z","note Z to A"]};
+ const sortText={train:["name A to Z","name Z to A"],dep:["earliest departure first","latest departure first"],arr:["earliest arrival first","latest arrival first"],price:["cheapest first","most expensive first"],note:["note A to Z","note Z to A"]};
  const filterText=(filt.dir==="all"?"All options":filt.dir==="out"?"Going options only":"Return options only")+(filt.priced?", with a listed fare":"");
  $("state").textContent=filterText+" · "+sortText[sortKey][sortDir>0?0:1]+" (tap a heading again to flip)";
  $("hr").innerHTML=cols.map(([k,t])=>`<th data-k="${k}" ${k===sortKey?`aria-sort="${sortDir>0?"ascending":"descending"}" data-arrow="${sortDir>0?" ▲":" ▼"}"`:""}>${t}</th>`).join("");
@@ -115,7 +115,6 @@ function render(){
   const pb=(l.soldOut?'<span class="badge soldout">sold out</span>':"")+(isC?'<span class="badge cheapest">cheapest</span>':"")+(isCT?'<span class="badge cheapest">cheapest train</span>':"")+(l.verified===false?'<span class="badge unver">unverified</span>':"");
   return `<tr class="${isC||isCT?"cheapest":""}">
  <td class="t" data-l="Transport">${l.train} <span class="tag">${l.mode&&l.mode!=="train"?l.mode+", ":""}${l.class}</span></td>
- <td data-l="Direction">${l.dir==="out"?"Going":"Return"}: ${l.from} &rarr; ${l.to}</td>
  <td data-l="Departs">${dd(l.depDate)} ${l.dep}</td>
  <td data-l="Arrives">${l.arrDate?dd(l.arrDate)+" "+l.arr:"not found"}</td>
  <td data-l="Price">${rp(l.price,l.priceMax)}${pb} <span class="mut">(${l.priceNote})</span></td>
