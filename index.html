@@ -87,7 +87,7 @@ function render(){
  const order=["train","bus","shuttle","flight"];
  $("ranges").innerHTML="<b>Price ranges, one way:</b> "+order.filter(m=>modes[m]).map(m=>`${label[m]}: ${rp(modes[m].lo,modes[m].hi)}${modes[m].unv?' <span class="badge unver">includes unverified fares</span>':""}`).join(" &middot; ")+'<br><span class="mut">Ranges come from the fares in the table below. "Unverified" means not re-checked live in the latest recheck; see each fare note for its date.</span>';
  const byId=Object.fromEntries(trip.legs.map(l=>[l.id,l]));
- const buyFor=l=>{const c=trip.combos.find(c=>c.legs.includes(l.id));if(!c)return"";const m=l.mode||"train";let bs=c.buy||[];
+ const buyFor=l=>{const m=l.mode||"train";const c=trip.combos.find(c=>c.legs.includes(l.id))||trip.combos.find(c=>c.legs.some(i=>(byId[i].mode||"train")===m));if(!c)return"";let bs=c.buy||[];
   if(m==="bus"||m==="shuttle")bs=bs.filter(b=>l.dir==="out"?!/Jogja to Jakarta|^Return/.test(b.label):!/Jakarta to Jogja|^Going/.test(b.label)||/Traveloka/.test(b.label));
   return bs.map(b=>`<a href="${b.url}">${b.label}</a>`).join(" | ")};
  const chips=[["dir","all","All"],["dir","out","Going"],["dir","back","Return"],["priced",true,"Has a fare"]];
