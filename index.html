@@ -60,7 +60,7 @@ a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 <h2>Sources</h2><ul id="src" class="mut"></ul>
 <p><a id="book" href="https://booking.kai.id/">Check trains on KAI Access (booking.kai.id)</a></p>
 
-<footer>Built with AI assistance (Instinct and others). Not everything has been reviewed by Irvan. The data was gathered by AI from public pages and has not been checked live. Open source, AGPL-3.0: <a href="https://github.com/irvan-putra/singgah">github.com/irvan-putra/singgah</a>.</footer>
+<footer>Built with AI assistance (Instinct and others). Each row labels whether its current details were live-checked; unverified rows rely on older listings or estimates. Open source, AGPL-3.0: <a href="https://github.com/irvan-putra/singgah">github.com/irvan-putra/singgah</a>.</footer>
 <script>
 const $=id=>document.getElementById(id);
 const rp=(n,m)=>n==null?"n/a":"Rp"+Math.round(n/1000).toLocaleString("id-ID")+"k"+(m&&m!==n?"-"+Math.round(m/1000).toLocaleString("id-ID")+"k":"");
@@ -89,9 +89,9 @@ function render(){
  const legs=trip.legs.filter(l=>verdict(l)[1]!=="no");
  const order=["train","bus","shuttle","flight"];
  const rangeLines=dir=>{
-  const modes={};
-  legs.filter(l=>l.dir===dir&&l.price!=null).forEach(l=>{const m=l.mode||"train",mx=l.priceMax||l.price;(modes[m]=modes[m]||{lo:1/0,hi:0});modes[m].lo=Math.min(modes[m].lo,l.price);modes[m].hi=Math.max(modes[m].hi,mx)});
-  return order.filter(m=>modes[m]).map(m=>`${label[m]}: ${rp(modes[m].lo,modes[m].hi)}`).join("<br>");
+  const groups={};
+  trip.legs.filter(l=>l.dir===dir&&l.price!=null).forEach(l=>{const m=l.mode||"train",state=l.verified===true?"verified":"unverified",k=m+"|"+state,mx=l.priceMax||l.price;if(!groups[k])groups[k]={mode:m,state,lo:1/0,hi:0};groups[k].lo=Math.min(groups[k].lo,l.price);groups[k].hi=Math.max(groups[k].hi,mx)});
+  return order.flatMap(m=>["verified","unverified"].filter(state=>groups[m+"|"+state]).map(state=>{const g=groups[m+"|"+state];return `${label[m]} (${state}): ${rp(g.lo,g.hi)}`})).join("<br>");
  };
  $("ranges").innerHTML=[['Going','out'],['Return','back']].map(([title,dir])=>{const lines=rangeLines(dir);return lines?`<b>${title}</b><br>${lines}`:""}).filter(Boolean).join("<br><br>");
  const byId=Object.fromEntries(trip.legs.map(l=>[l.id,l]));
@@ -126,11 +126,12 @@ function render(){
   return `<tr class="${isC||isCT?"cheapest":""}">
  <td class="t" data-l="Transport">${l.train} <span class="tag">${l.dir==="out"?"Going":"Return"}</span> <span class="tag">${l.mode&&l.mode!=="train"?l.mode+", ":""}${l.class}</span></td>
  <td data-l="Departs">${dd(l.depDate)} ${l.dep}</td>
- <td data-l="Arrives">${l.arrDate?dd(l.arrDate)+" "+l.arr:"not found"}</td>
+ <td data-l="Arrives">${l.arrDate?dd(l.arrDate)+" "+(l.arrDisplay||l.arr):"not found"}</td>
  <td data-l="Price">${rp(l.price,l.priceMax)}${pb} <span class="mut">(${l.priceNote})</span></td>
  <td data-l="Note"><span class="${c}">${v}.</span> ${l.note}</td>
  <td data-l="Buy">${buyFor(l)}</td></tr>`}).join("");
- $("count").textContent=ls.length+" of "+legs.length+" options that fit the event ("+(trip.legs.length-legs.length)+" hidden: sold out, arrive too late or leave too early). Buffers: arrive at least 90 min (airport 150) before start, leave at least 60 min (airport 120) after the end. Tap a column heading to sort.";
+ const excluded=trip.legs.length-legs.length, unverified=trip.legs.filter(l=>l.verified===false).length;
+ $("count").textContent=ls.length+" options shown for this direction and transport selection. "+excluded+" rows excluded by the event-fit filter (sold out, arriving too late, or leaving too early); "+unverified+" options have unverified current prices/availability. Buffers: arrive at least 90 min (airport 150) before start, leave at least 60 min (airport 120) after the end. Tap a column heading to sort.";
  $("src").innerHTML=trip.sources.map(s=>`<li><a href="${s.url}">${s.label}</a></li>`).join("")+"<li>Progo 300 fare: a 4 Nov fare listing, also in the CNN list above.</li>";
 }
 fetch("data/trips.json").then(r=>r.json()).then(d=>{

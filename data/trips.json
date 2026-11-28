@@ -11,7 +11,7 @@
     "place": "Garuda Spark Innovation Hub, Mlati, Sleman",
     "note": "times in WIB"
    },
-   "status": "Live recheck 28 Nov 2026 around 12:15 WIB: all KAI trains re-priced and seat-checked on booking.kai.id for 4-6 Dec; exec bus re-verified on tiket.com for 4 Dec. Still sold out: Progo 300 on 4 Dec, Progo 299 on 6 Dec, Taksaka 33 regular on 6 Dec, Bengawan. Selling down: Taksaka 34 and 32 on 4 Dec (8 kursi left each), Senja Utama exec. New finds: Jayakarta 290 out Rp340k and Jayakarta 289 back Rp240k (cheapest live train pair), Singasari 149 seats back on 5 Dec, Batavia 125 economy Rp380k to Gambir. Sleeper bus, shuttle, return bus and flights NOT rechecked today - those fares are estimates from 26 Nov or a route listing.",
+   "status": "Partial live recheck 28 Nov 2026 18:55 WIB. Current date-specific prices verified: executive bus going (but daytime and too late for event), flights both directions. Return bus date-specific search yielded no listings; its schedule/fare remain unverified. KAI fares/schedules/availability remain prior historical checks only, not reverified live.",
    "book": "https://booking.kai.id/",
    "sources": [
     {
@@ -93,6 +93,18 @@
     {
      "label": "cestee.com: YIA airport transport (train Rp20k-50k, taxi Rp200k-280k)",
      "url": "https://www.cestee.com/airport/yogyakarta-international-yia/transport"
+    },
+    {
+     "label": "tiket.com exact search: CGK-YIA, 4 Dec 2026",
+     "url": "https://www.tiket.com/id-id/flights/search?d=CGK&a=YIA&dType=AIRPORT&aType=AIRPORT&date=2026-12-04&adult=1&child=0&infant=0&class=economy&type=depart"
+    },
+    {
+     "label": "tiket.com exact search: YIA-CGK, 6 Dec 2026",
+     "url": "https://www.tiket.com/id-id/flights/search?d=YIA&a=CGK&dType=AIRPORT&aType=AIRPORT&date=2026-12-06&adult=1&child=0&infant=0&class=economy&type=depart"
+    },
+    {
+     "label": "tiket.com exact search: Jakarta-Yogyakarta bus, 4 Dec 2026",
+     "url": "https://www.tiket.com/id-id/bus-travel/search?origin=63d0b5bd2cbd5656536ba09f&destination=63d0b5bb2cbd5656536b9ec4&tripType=oneway&journeyType=depart&departureDate=2026-12-04&adult=1"
     }
    ],
    "legs": [
@@ -108,11 +120,11 @@
      "arrDate": "2026-12-05",
      "arr": "04:22",
      "price": 650000,
-     "priceNote": "live booking.kai.id 28 Nov midday: Rp650k, Tersisa 8 kursi on 4 Dec (was 32 on 26 Nov; selling down fast)",
+     "priceNote": "live booking.kai.id 28 Nov midday: Rp650k, Tersisa 8 kursi on 4 Dec (was 32 on 26 Nov; selling down fast) | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Overnight. Arrives hours before the event.",
      "mode": "train",
      "priceMax": null,
-     "verified": true
+     "verified": false
     },
     {
      "id": "progo300",
@@ -126,11 +138,11 @@
      "arrDate": "2026-12-05",
      "arr": "07:24",
      "price": 330000,
-     "priceNote": "live booking.kai.id 28 Nov midday: Rp330k, still SOLD OUT on 4 Dec. Live fallbacks on 4 Dec: Jayakarta 290 (17:15, arr 00:45) Rp340k Tersedia, Bogowonto 192 (17:45, arr 01:41) Rp375k Tersedia - both added to the table below",
+     "priceNote": "live booking.kai.id 28 Nov midday: Rp330k, still SOLD OUT on 4 Dec. Live fallbacks on 4 Dec: Jayakarta 290 (17:15, arr 00:45) Rp340k Tersedia, Bogowonto 192 (17:45, arr 01:41) Rp375k Tersedia - both added to the table below | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Overnight, arrives 07:24. Live 26 Nov: 4 Dec sold out. 3 Dec still has seats. Fallback on 4 Dec: Jayakarta 290 (Pasar Senen 17:15, arr 00:45) Rp340k Tersedia, or Bogowonto 192 (17:45, arr 01:41) Rp375k Tersedia.",
      "mode": "train",
      "priceMax": null,
-     "verified": true,
+     "verified": false,
      "soldOut": true
     },
     {
@@ -145,11 +157,11 @@
      "arrDate": "2026-12-04",
      "arr": "13:16",
      "price": 650000,
-     "priceNote": "live booking.kai.id 28 Nov midday: Rp650k, Tersisa 8 kursi on 4 Dec (was 24 on 26 Nov)",
+     "priceNote": "live booking.kai.id 28 Nov midday: Rp650k, Tersisa 8 kursi on 4 Dec (was 24 on 26 Nov) | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Day before the event, needs a hotel night.",
      "mode": "train",
      "priceMax": null,
-     "verified": true
+     "verified": false
     },
     {
      "id": "taksaka30",
@@ -163,11 +175,11 @@
      "arrDate": "2026-12-04",
      "arr": "19:21",
      "price": 650000,
-     "priceNote": "live booking.kai.id 28 Nov midday: Rp650k Tersedia on 4 Dec",
+     "priceNote": "live booking.kai.id 28 Nov midday: Rp650k Tersedia on 4 Dec | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Day before the event, needs a hotel night.",
      "mode": "train",
      "priceMax": null,
-     "verified": true
+     "verified": false
     },
     {
      "id": "senja196",
@@ -181,11 +193,11 @@
      "arrDate": "2026-12-05",
      "arr": "02:27",
      "price": 390000,
-     "priceNote": "live booking.kai.id 28 Nov midday on 4 Dec: economy Rp390k Tersedia, executive Rp530k Tersisa 23 kursi (was 39)",
+     "priceNote": "live booking.kai.id 28 Nov midday on 4 Dec: economy Rp390k Tersedia, executive Rp530k Tersisa 23 kursi (was 39) | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Arrival time not found.",
      "mode": "train",
      "priceMax": 530000,
-     "verified": true
+     "verified": false
     },
     {
      "id": "taksaka33-5",
@@ -199,11 +211,11 @@
      "arrDate": "2026-12-05",
      "arr": "22:00",
      "price": 600000,
-     "priceNote": "live booking.kai.id 28 Nov midday: Rp600k Tersedia on 5 Dec (was Rp590k on 26 Nov)",
+     "priceNote": "live booking.kai.id 28 Nov midday: Rp600k Tersedia on 5 Dec (was Rp590k on 26 Nov) | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Leaves before the event ends (17:00).",
      "mode": "train",
      "priceMax": null,
-     "verified": true
+     "verified": false
     },
     {
      "id": "taksaka31-5",
@@ -217,11 +229,11 @@
      "arrDate": "2026-12-06",
      "arr": "04:02",
      "price": 540000,
-     "priceNote": "live booking.kai.id 28 Nov midday: Rp540k Tersedia on 5 Dec",
+     "priceNote": "live booking.kai.id 28 Nov midday: Rp540k Tersedia on 5 Dec | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Overnight home after the event.",
      "mode": "train",
      "priceMax": null,
-     "verified": true
+     "verified": false
     },
     {
      "id": "taksaka33-6",
@@ -235,11 +247,11 @@
      "arrDate": "2026-12-06",
      "arr": "22:00",
      "price": 640000,
-     "priceNote": "live booking.kai.id 28 Nov midday: regular executive SOLD OUT on 6 Dec; only Taksaka Luxury 33L left at Rp1.250k, Tersisa 9 kursi",
+     "priceNote": "live booking.kai.id 28 Nov midday: regular executive SOLD OUT on 6 Dec; only Taksaka Luxury 33L left at Rp1.250k, Tersisa 9 kursi | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Live 26 Nov: regular seats gone for 6 Dec.",
      "mode": "train",
      "priceMax": null,
-     "verified": true,
+     "verified": false,
      "soldOut": true
     },
     {
@@ -254,11 +266,11 @@
      "arrDate": "2026-12-07",
      "arr": "04:02",
      "price": 640000,
-     "priceNote": "live booking.kai.id 28 Nov midday: Rp640k Tersedia on 6 Dec",
+     "priceNote": "live booking.kai.id 28 Nov midday: Rp640k Tersedia on 6 Dec | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Next day, after a hotel night.",
      "mode": "train",
      "priceMax": null,
-     "verified": true
+     "verified": false
     },
     {
      "id": "fajar198",
@@ -271,12 +283,12 @@
      "arr": "15:13",
      "price": 310000,
      "priceMax": 500000,
-     "priceNote": "live booking.kai.id 28 Nov midday on 4 Dec: economy Rp310k Tersedia, executive Rp500k Tersisa 25 kursi",
+     "priceNote": "live booking.kai.id 28 Nov midday on 4 Dec: economy Rp310k Tersedia, executive Rp500k Tersisa 25 kursi | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Day before the event, needs a hotel night. Same fare as Progo but arrives in daylight at Tugu.",
      "mode": "train",
      "class": "Economy / Executive",
      "from": "Pasarsenen",
-     "verified": true
+     "verified": false
     },
     {
      "id": "fajar197",
@@ -289,12 +301,12 @@
      "arr": "14:51",
      "price": 310000,
      "priceMax": 530000,
-     "priceNote": "live booking.kai.id 28 Nov midday on 6 Dec: economy Rp310k Tersedia, executive Rp530k Tersedia (5 Dec: Rp270k/Rp460k)",
+     "priceNote": "live booking.kai.id 28 Nov midday on 6 Dec: economy Rp310k Tersedia, executive Rp530k Tersedia (5 Dec: Rp270k/Rp460k) | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Morning after a hotel night.",
      "mode": "train",
      "class": "Economy / Executive",
      "from": "Yogyakarta",
-     "verified": true
+     "verified": false
     },
     {
      "id": "senja195",
@@ -306,13 +318,13 @@
      "arrDate": "2026-12-06",
      "arr": "01:26",
      "price": 270000,
-     "priceNote": "live booking.kai.id 28 Nov midday on 5 Dec: economy Rp270k Tersedia, executive Rp480k Tersedia (6 Dec: Rp390k/Rp590k, exec Tersisa 24 kursi)",
+     "priceNote": "live booking.kai.id 28 Nov midday on 5 Dec: economy Rp270k Tersedia, executive Rp480k Tersedia (6 Dec: Rp390k/Rp590k, exec Tersisa 24 kursi) | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Leaves 50 minutes after the event ends. Tight from Mlati to Tugu, check the travel time. Home at 01:26.",
      "mode": "train",
      "priceMax": 480000,
      "class": "Economy / Executive",
      "from": "Yogyakarta",
-     "verified": true
+     "verified": false
     },
     {
      "id": "progo299",
@@ -324,13 +336,13 @@
      "arrDate": "2026-12-06",
      "arr": "21:41",
      "price": 330000,
-     "priceNote": "live booking.kai.id 28 Nov midday: 6 Dec still SOLD OUT; on 5 Dec Rp290k Tersedia (leaves 13:30, during the event). Live fallback 6 Dec: Jayakarta 289 (19:05, home 03:11) Rp340k Tersedia, or Fajar Utama Yk 197 economy Rp310k",
+     "priceNote": "live booking.kai.id 28 Nov midday: 6 Dec still SOLD OUT; on 5 Dec Rp290k Tersedia (leaves 13:30, during the event). Live fallback 6 Dec: Jayakarta 289 (19:05, home 03:11) Rp340k Tersedia, or Fajar Utama Yk 197 economy Rp310k | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Live 26 Nov: 6 Dec sold out. 5 Dec 13:30 still has seats but leaves during the event. Fallback 6 Dec from Tugu: Fajar Utama Yk 197 economy Rp310k Tersedia (07:00, arr 14:51).",
      "mode": "train",
      "priceMax": null,
      "class": "Economy",
      "from": "Lempuyangan",
-     "verified": true,
+     "verified": false,
      "soldOut": true
     },
     {
@@ -343,31 +355,32 @@
      "arrDate": "2026-12-06",
      "arr": "00:18",
      "price": null,
-     "priceNote": "not bookable on booking.kai.id: no Lempuyangan-Gambir schedule found for 5 or 6 Dec (checked live 26 Nov)",
+     "priceNote": "not bookable on booking.kai.id: no Lempuyangan-Gambir schedule found for 5 or 6 Dec (checked live 26 Nov) | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Timetable sites list it, but KAI booking has no LPN-GMR seats for these dates; treat as not running or not on sale.",
      "mode": "train",
      "priceMax": null,
      "class": "not found",
      "from": "Lempuyangan",
-     "verified": true
+     "verified": false
     },
     {
      "id": "busx-out",
      "mode": "bus",
      "dir": "out",
      "train": "Bus overnight, Executive",
-     "to": "Yogyakarta (terminal varies)",
+     "to": "Gamping (Jogja)",
      "depDate": "2026-12-04",
-     "dep": "19:00",
-     "arrDate": "2026-12-05",
-     "arr": "03:00",
+     "dep": "05:25",
+     "arrDate": "2026-12-04",
+     "arr": "17:35",
      "price": 259004,
-     "priceMax": 285601,
-     "priceNote": "re-verified live tiket.com 28 Nov midday for 4 Dec: Agramas Eksekutif Rp259.004 (list Rp278.200), many departure points. 26 Nov: Annura Eksekutif Rp285k; 27 Nov route listing ran Rp172k-238k",
-     "note": "Typical overnight bus, about 8 hours (Rosalia Indah runs 19:00). Times and terminals depend on the operator. No hotel. Arrives hours before the event.",
+     "priceMax": null,
+     "priceNote": "Verified on tiket.com 28 Nov 2026 18:55 WIB: Agramas Executive, 4 Dec, Kapuk 05:25; destination varies among Gamping, Giwangan, Jombor and Ringroad with arrivals 17:35–18:00, IDR 259,004 (list IDR 278,200). Daytime run, arrives the day before PyJogja.",
+     "note": "Daytime run, about 12h10–12h35 depending on destination terminal. Arrives 17:35–18:00 on Dec 4, the day before PyJogja; allow for travel from the terminal and an overnight stay.",
      "class": "Executive",
-     "from": "Jakarta (terminal varies)",
-     "verified": true
+     "from": "Kapuk",
+     "verified": true,
+     "arrDisplay": "17:35–18:00"
     },
     {
      "id": "busx-back",
@@ -381,7 +394,7 @@
      "arr": "03:00",
      "price": 274601,
      "priceMax": null,
-     "priceNote": "tiket.com 26 Nov for 6 Dec: Brave Eksekutif Rp275k. Not rechecked 28 Nov - treat as an estimate",
+     "priceNote": "tiket.com 26 Nov for 6 Dec: Brave Eksekutif Rp275k. Not rechecked 28 Nov - treat as an estimate | Checked 28 Nov 2026 18:55 WIB: date-specific return search returned no listings; schedule and price remain unverified estimates.",
      "note": "Leaves after the event ends. Times depend on the operator.",
      "class": "Executive",
      "from": "Yogyakarta (terminal varies)",
@@ -398,7 +411,7 @@
      "arrDate": "2026-12-05",
      "arr": "03:00",
      "price": 268966,
-     "priceNote": "tiket.com 26 Nov evening, 4 Dec, Sleeper filter: Agramas Suite Class Combi Rp268.966 (list Rp288.900), daytime run 06:00-07:10. Not rechecked 28 Nov - treat as an estimate",
+     "priceNote": "tiket.com 26 Nov evening, 4 Dec, Sleeper filter: Agramas Suite Class Combi Rp268.966 (list Rp288.900), daytime run 06:00-07:10. Not rechecked 28 Nov - treat as an estimate | Not rechecked live 28 Nov 2026 18:55 WIB; previous listing is historical, current availability unverified.",
      "note": "Lie-flat style seat. Costs less than the Progo train. Live find is a daytime run; check tiket.com for evening slots.",
      "priceMax": null,
      "class": "Sleeper",
@@ -416,7 +429,7 @@
      "arrDate": "2026-12-06",
      "arr": "03:00",
      "price": 350000,
-     "priceNote": "estimate only: return never verified live; assume similar to going (around Rp269k-289k on tiket.com, 26 Nov)",
+     "priceNote": "estimate only: return never verified live; assume similar to going (around Rp269k-289k on tiket.com, 26 Nov) | Checked 28 Nov 2026 18:55 WIB: date-specific return search returned no listings; schedule and price remain unverified estimates.",
      "note": "Leaves after the event ends.",
      "priceMax": null,
      "class": "Sleeper",
@@ -435,7 +448,7 @@
      "arr": "07:00",
      "price": 407001,
      "priceMax": null,
-     "priceNote": "tiket.com 26 Nov evening, 4 Dec, Shuttle filter: BASS Trans Shuttle Rp407.001 (list Rp408.000): 18:30 Pasar Rebo, 19:00 Kelapa Gading or 21:00 Jatiwaringin, arrive Kota Yogyakarta 07:00 on 5 Dec. Not rechecked 28 Nov - treat as an estimate",
+     "priceNote": "tiket.com 26 Nov evening, 4 Dec, Shuttle filter: BASS Trans Shuttle Rp407.001 (list Rp408.000): 18:30 Pasar Rebo, 19:00 Kelapa Gading or 21:00 Jatiwaringin, arrive Kota Yogyakarta 07:00 on 5 Dec. Not rechecked 28 Nov - treat as an estimate | Not rechecked live 28 Nov 2026 18:55 WIB; previous listing is historical, current availability unverified.",
      "note": "10 to 12.5 hours, overnight, arrives 07:00 on event day. Drop-off is Kota Yogyakarta, exact point depends on the operator.",
      "class": "Shuttle",
      "from": "Jakarta (pickup)",
@@ -453,7 +466,7 @@
      "arr": null,
      "price": 180000,
      "priceMax": 350000,
-     "priceNote": "estimate only: return never verified live; assume similar to going (around Rp407k on tiket.com, 26 Nov)",
+     "priceNote": "estimate only: return never verified live; assume similar to going (around Rp407k on tiket.com, 26 Nov) | Checked 28 Nov 2026 18:55 WIB: date-specific return search returned no listings; schedule and price remain unverified estimates.",
      "note": "10 to 13 hours. Placeholder time. Leaves after the event ends.",
      "class": "Shuttle",
      "from": "Yogyakarta (pickup)",
@@ -472,10 +485,10 @@
      "arr": "00:45",
      "price": 340000,
      "priceMax": null,
-     "priceNote": "live booking.kai.id 28 Nov midday: Rp340k Tersedia on 4 Dec",
+     "priceNote": "live booking.kai.id 28 Nov midday: Rp340k Tersedia on 4 Dec | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Cheapest live overnight train that still gets you there before 09:00. Sleep on the train.",
      "mode": "train",
-     "verified": true
+     "verified": false
     },
     {
      "id": "bogowonto192",
@@ -490,10 +503,10 @@
      "arr": "01:41",
      "price": 375000,
      "priceMax": 530000,
-     "priceNote": "live booking.kai.id 28 Nov midday on 4 Dec: economy Rp375k Tersedia, executive Rp530k Tersisa 38 kursi",
+     "priceNote": "live booking.kai.id 28 Nov midday on 4 Dec: economy Rp375k Tersedia, executive Rp530k Tersisa 38 kursi | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Overnight, arrives 01:41. Sleep on the train.",
      "mode": "train",
-     "verified": true
+     "verified": false
     },
     {
      "id": "jayakarta289",
@@ -508,10 +521,10 @@
      "arr": "03:11",
      "price": 240000,
      "priceMax": null,
-     "priceNote": "live booking.kai.id 28 Nov midday: Rp240k Tersedia on 5 Dec (6 Dec Rp340k Tersedia)",
+     "priceNote": "live booking.kai.id 28 Nov midday: Rp240k Tersedia on 5 Dec (6 Dec Rp340k Tersedia) | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Cheapest live ride home. Leaves 2 hours after the event ends, home 03:11.",
      "mode": "train",
-     "verified": true
+     "verified": false
     },
     {
      "id": "singasari149",
@@ -526,10 +539,10 @@
      "arr": "05:28",
      "price": 360000,
      "priceMax": 490000,
-     "priceNote": "live booking.kai.id 28 Nov midday on 5 Dec: economy Rp360k Tersedia, executive Rp490k Tersisa 22 kursi (sold out on 26 Nov, seats are back)",
+     "priceNote": "live booking.kai.id 28 Nov midday on 5 Dec: economy Rp360k Tersedia, executive Rp490k Tersisa 22 kursi (sold out on 26 Nov, seats are back) | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Overnight home, later departure than Jayakarta.",
      "mode": "train",
-     "verified": true
+     "verified": false
     },
     {
      "id": "batavia125",
@@ -544,46 +557,46 @@
      "arr": "06:19",
      "price": 380000,
      "priceMax": 490000,
-     "priceNote": "live booking.kai.id 28 Nov midday on 5 Dec: economy Rp380k Tersedia, executive Rp490k Tersedia (6 Dec: Rp440k/Rp620k)",
+     "priceNote": "live booking.kai.id 28 Nov midday on 5 Dec: economy Rp380k Tersedia, executive Rp490k Tersedia (6 Dec: Rp440k/Rp620k) | NOT rechecked live 28 Nov 2026 18:55 WIB; previous KAI check was around 12:15 WIB (26 Nov on Borobudur); current fare/availability unverified.",
      "note": "Overnight to Gambir after the event.",
      "mode": "train",
-     "verified": true
+     "verified": false
     },
     {
      "id": "fly-out",
      "dir": "out",
      "mode": "flight",
      "train": "Flight Jakarta (CGK) to YIA",
-     "class": "Economy",
-     "from": "Jakarta (CGK)",
-     "to": "Yogyakarta Intl (YIA)",
+     "class": "Economy, direct",
+     "from": "CGK",
+     "to": "YIA",
      "depDate": "2026-12-04",
-     "dep": "varies",
-     "arrDate": null,
-     "arr": null,
-     "price": 825000,
-     "priceMax": 887000,
-     "priceNote": "tiket.com route listing seen 28 Nov: TransNusa CGK-YIA Rp825k-887k one way (sampled dates 29 Nov-6 Dec). NOT checked for 4 Dec specifically - unverified",
-     "note": "About 1h10 in the air, but YIA is 40+ km from the city: airport train to Tugu 35-40 min Rp20k-50k, taxi/Grab 75-90 min Rp200k-280k (cestee.com YIA transport guide). Add that cost and time; the last airport train leaves early evening.",
-     "verified": false
+     "dep": "08:30",
+     "arrDate": "2026-12-04",
+     "arr": "09:40",
+     "price": 1083980,
+     "priceMax": 1491520,
+     "priceNote": "Verified on tiket.com 28 Nov 2026 18:55 WIB: 4 Dec CGK→YIA direct listings IDR 1,083,980–1,491,520. Lowest: Super Air Jet 08:30–09:40, 10 kg baggage. Lowest-priced flight arrives after the event's start; event filter hides it.",
+     "note": "Lowest-priced direct flight leaves 08:30 and lands 09:40 on Dec 4, the day before PyJogja. Allow for YIA-to-venue transfer and an overnight stay.",
+     "verified": true
     },
     {
      "id": "fly-back",
      "dir": "back",
      "mode": "flight",
      "train": "Flight YIA to Jakarta (CGK)",
-     "class": "Economy",
-     "from": "Yogyakarta Intl (YIA)",
-     "to": "Jakarta (CGK)",
+     "class": "Economy, direct",
+     "from": "YIA",
+     "to": "CGK",
      "depDate": "2026-12-06",
-     "dep": "varies",
-     "arrDate": null,
-     "arr": null,
-     "price": 825000,
-     "priceMax": 887000,
-     "priceNote": "tiket.com route listing seen 28 Nov: TransNusa CGK-YIA Rp825k-887k one way (sampled dates). NOT checked for 5 or 6 Dec specifically - unverified",
-     "note": "Leave Mlati about 3 hours before the flight: YIA is 40+ km away, train 35-40 min from Tugu Rp20k-50k, taxi 75-90 min Rp200k-280k.",
-     "verified": false
+     "dep": "10:20",
+     "arrDate": "2026-12-06",
+     "arr": "11:30",
+     "price": 1250036,
+     "priceMax": 1448936,
+     "priceNote": "Verified on tiket.com 28 Nov 2026 18:55 WIB: 6 Dec YIA→CGK direct listings IDR 1,250,036–1,448,936. Lowest: Super Air Jet 10:20–11:30, 10 kg baggage.",
+     "note": "Lowest-priced direct flight on the day after the event. Airport-to-home transfer is additional.",
+     "verified": true
     }
    ],
    "combos": [
@@ -677,7 +690,7 @@
       "busx-out",
       "busx-back"
      ],
-     "note": "No hotel. LIVE 28 Nov on tiket.com: 4 Dec exec bus from Rp259k (Agramas, re-verified). Return from Rp275k as of 26 Nov, not rechecked today.",
+     "note": "Arrival is on Dec 4, the day before PyJogja, so budget for an overnight stay. Agramas executive verified on tiket.com: Kapuk 05:25 → Gamping 17:45 on Dec 4, IDR 259,004. Return 6 Dec remains an unverified estimate; the date-specific search returned no listings.",
      "buy": [
       {
        "label": "tiket.com live search: Jakarta to Jogja, 4 Dec",
@@ -709,7 +722,7 @@
       "buss-out",
       "buss-back"
      ],
-     "note": "No hotel. Sleeper going verified 26 Nov (Rp269k Agramas Suite Combi); return is an estimate. Not rechecked 28 Nov.",
+     "note": "Sleeper going and return are unverified estimates as of 28 Nov 2026 18:55 WIB; the 4 Dec prior listing was daytime, not overnight, and the 6 Dec return search returned no listings. Check the exact schedule before relying on this combo.",
      "buy": [
       {
        "label": "tiket.com live search: Jakarta to Jogja, 4 Dec",
@@ -741,7 +754,7 @@
       "shut-out",
       "shut-back"
      ],
-     "note": "Door to door, 10 to 13 hours. Going verified 26 Nov (BASS Trans Rp407k); return is an estimate. Not rechecked 28 Nov.",
+     "note": "Shuttle going and return are unverified estimates as of 28 Nov 2026 18:55 WIB; return date search returned no listings. Check the exact pickup, drop-off and schedule before relying on this combo.",
      "buy": [
       {
        "label": "tiket.com live search: Jakarta to Jogja, 4 Dec",
@@ -789,18 +802,18 @@
       "fly-out",
       "fly-back"
      ],
-     "note": "Fastest in the air (about 1h10) but not door to door: YIA is 40+ km out, airport train to Tugu Rp20k-50k 35-40 min, taxi/Grab Rp200k-280k 75-90 min. Realistic total about Rp900k-1.2M one way with transfers. Fares from a tiket.com listing, not date-verified.",
+     "note": "Date-specific Tiket.com searches checked 28 Nov 2026 18:55 WIB: going direct flight from IDR 1,083,980 (lowest Super Air Jet 08:30–09:40 on Dec 4, day before the event); return 6 Dec from IDR 1,250,036 (lowest Super Air Jet 10:20–11:30). Budget an overnight stay and airport transfers; not door-to-door.",
      "buy": [
       {
-       "label": "tiket.com flights: Jakarta to Jogja",
-       "url": "https://www.tiket.com/en-id/flights/route/jakarta-to-jogja"
+       "label": "Going: tiket.com CGK to YIA, 4 Dec",
+       "url": "https://www.tiket.com/id-id/flights/search?d=CGK&a=YIA&dType=AIRPORT&aType=AIRPORT&date=2026-12-04&adult=1&child=0&infant=0&class=economy&type=depart"
       },
       {
-       "label": "Google Flights: Jakarta to Yogyakarta",
-       "url": "https://www.google.com/travel/flights/flights-from-jakarta-to-yogyakarta.html"
+       "label": "Return: tiket.com YIA to CGK, 6 Dec",
+       "url": "https://www.tiket.com/id-id/flights/search?d=YIA&a=CGK&dType=AIRPORT&aType=AIRPORT&date=2026-12-06&adult=1&child=0&infant=0&class=economy&type=depart"
       }
      ],
-     "buyNote": "Aggregator listing, not date-verified. Check the exact date and the airport (YIA, not the old Adisutjipto) before paying."
+     "buyNote": "Date-specific economy searches; recheck final price and airport before booking."
     }
    ],
    "tips": [
