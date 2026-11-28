@@ -134,7 +134,7 @@ function render(){
  $("count").textContent=ls.length+" options shown for this direction and transport selection. "+excluded+" rows excluded by the event-fit filter (sold out, arriving too late, or leaving too early); "+unverified+" options have unverified current prices/availability. Buffers: arrive at least 90 min (airport 150) before start, leave at least 60 min (airport 120) after the end. Tap a column heading to sort.";
  $("src").innerHTML=trip.sources.map(s=>`<li><a href="${s.url}">${s.label}</a></li>`).join("")+"<li>Progo 300 fare: a 4 Nov fare listing, also in the CNN list above.</li>";
 }
-fetch("data/trips.json").then(r=>r.json()).then(d=>{
+fetch("data/trips.json?v=16bdd1b",{cache:"no-store"}).then(r=>r.json()).then(d=>{
  data=d;const sel=$("trip");sel.innerHTML=d.trips.map(t=>`<option value="${t.id}">${t.title}</option>`).join("");
  const want=new URLSearchParams(location.search).get("trip");if(want)sel.value=want;
  const go=()=>{trip=data.trips.find(t=>t.id===sel.value)||data.trips[0];render()};sel.onchange=go;go();
