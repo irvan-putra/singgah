@@ -45,7 +45,6 @@ a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 <div id="head"></div>
 <div class="ranges" id="ranges"></div>
 
-<ul id="tips" class="mut"></ul>
 
 <h2>All transport</h2>
 <div class="chips" id="chips"></div>
@@ -79,13 +78,12 @@ function verdict(l){
  return (l.depDate+l.dep)>=need?["leaves after the event","ok"]:["leaves too early","no"]}
 function render(){
  $("head").innerHTML=`<div><b>${trip.event.name}</b>, ${dd(trip.event.date)} ${trip.event.start}-${trip.event.end} (WIB)<br><span class="mut">${trip.event.place}</span></div>`;
- $("tips").innerHTML=(trip.tips||[]).map(x=>`<li>${x}</li>`).join("");
  $("book").href=trip.book||"#";
  const modes={};const label={train:"Train",bus:"Bus",shuttle:"Shuttle",flight:"Flight"};
  const legs=trip.legs.filter(l=>verdict(l)[1]!=="no");
  legs.forEach(l=>{const m=l.mode||"train";if(l.price==null)return;const mx=l.priceMax||l.price;(modes[m]=modes[m]||{lo:1/0,hi:0,unv:false});modes[m].lo=Math.min(modes[m].lo,l.price);modes[m].hi=Math.max(modes[m].hi,mx);if(!l.verified)modes[m].unv=true});
  const order=["train","bus","shuttle","flight"];
- $("ranges").innerHTML="<b>Price ranges, one way:</b> "+order.filter(m=>modes[m]).map(m=>`${label[m]}: ${rp(modes[m].lo,modes[m].hi)}${modes[m].unv?' <span class="badge unver">includes unverified fares</span>':""}`).join(" &middot; ")+'<br><span class="mut">Ranges come from the fares in the table below. "Unverified" means not re-checked live in the latest recheck; see each fare note for its date.</span>';
+ $("ranges").innerHTML="<b>Price ranges, one way:</b> "+order.filter(m=>modes[m]).map(m=>`${label[m]}: ${rp(modes[m].lo,modes[m].hi)}`).join(" &middot; ");
  const byId=Object.fromEntries(trip.legs.map(l=>[l.id,l]));
  const buyFor=l=>{const m=l.mode||"train";const c=trip.combos.find(c=>c.legs.includes(l.id))||trip.combos.find(c=>c.legs.some(i=>(byId[i].mode||"train")===m));if(!c)return"";let bs=c.buy||[];
   if(m==="bus"||m==="shuttle")bs=bs.filter(b=>l.dir==="out"?!/Jogja to Jakarta|^Return/.test(b.label):!/Jakarta to Jogja|^Going/.test(b.label)||/Traveloka/.test(b.label));
