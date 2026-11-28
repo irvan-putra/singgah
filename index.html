@@ -93,11 +93,11 @@ function render(){
  const buyFor=l=>{const m=l.mode||"train";const c=trip.combos.find(c=>c.legs.includes(l.id))||trip.combos.find(c=>c.legs.some(i=>(byId[i].mode||"train")===m));if(!c)return"";let bs=c.buy||[];
   if(m==="bus"||m==="shuttle")bs=bs.filter(b=>l.dir==="out"?!/Jogja to Jakarta|^Return/.test(b.label):!/Jakarta to Jogja|^Going/.test(b.label)||/Traveloka/.test(b.label));
   return bs.map(b=>`<a href="${b.url}">${b.label}</a>`).join(" | ")};
- const chips=[["dir","all","All"],["dir","out","Going"],["dir","back","Return"],["priced",true,"Has a fare"]];
+ const chips=[["dir","out","Going"],["dir","back","Return"]];
  $("chips").innerHTML=chips.map(([k,v,t])=>`<button aria-pressed="${filt[k]===v}" data-k="${k}" data-v="${v}">${t}</button>`).join("");
  $("chips").querySelectorAll("button").forEach(b=>b.onclick=()=>{const k=b.dataset.k,v=b.dataset.v;if(k==="dir")filt.dir=v;else filt[k]=!filt[k];render()});
  const sortText={train:["name A to Z","name Z to A"],dep:["earliest departure first","latest departure first"],arr:["earliest arrival first","latest arrival first"],price:["cheapest first","most expensive first"],note:["note A to Z","note Z to A"]};
- const filterText=(filt.dir==="all"?"All options":filt.dir==="out"?"Going options only":"Return options only")+(filt.priced?", with a listed fare":"");
+ const filterText=filt.dir==="out"?"Going options only":"Return options only";
  $("state").textContent=filterText+" · "+sortText[sortKey][sortDir>0?0:1]+" (tap a heading again to flip)";
  $("hr").innerHTML=cols.map(([k,t])=>`<th data-k="${k}" ${k===sortKey?`aria-sort="${sortDir>0?"ascending":"descending"}" data-arrow="${sortDir>0?" ▲":" ▼"}"`:""}>${t}</th>`).join("");
  $("hr").querySelectorAll("th").forEach(h=>h.onclick=()=>{const k=h.dataset.k;if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=1}render()});
