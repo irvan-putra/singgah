@@ -100,7 +100,7 @@ function render(){
   return bs.map(b=>`<a href="${b.url}">${b.label}</a>`).join(" | ")};
  const modes=[...new Set(trip.legs.map(l=>l.mode||"train"))].sort((a,b)=>["train","bus","shuttle","flight"].indexOf(a)-["train","bus","shuttle","flight"].indexOf(b));
  const modeName={train:"Train",bus:"Bus",shuttle:"Shuttle",flight:"Flight"};
- const chips=[["dir","out","Going"],["dir","back","Return"],["mode","toggle",`Transport${filt.modes.length<modes.length?` (${filt.modes.length})`:""}`]];
+ const chips=[["dir","out","Going"],["dir","back","Return"],["mode","toggle","Transport"]];
  $("chips").innerHTML=chips.map(([k,v,t])=>`<button aria-pressed="${k==="mode"?modePanelOpen:filt.dir===v}" data-k="${k}" data-v="${v}">${t}</button>`).join("");
  $("chips").querySelectorAll("button").forEach(b=>b.onclick=()=>{if(b.dataset.k==="dir")filt.dir=b.dataset.v;else modePanelOpen=!modePanelOpen;render()});
  const panel=$("mode-panel");panel.hidden=!modePanelOpen;
