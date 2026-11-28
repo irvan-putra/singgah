@@ -35,6 +35,7 @@ tr.cheapest td{background:color-mix(in srgb,var(--acc) 10%,transparent)}
  table,thead,tbody,tr,td{display:block}
  thead tr{display:flex;flex-wrap:wrap;gap:4px;border:0;background:none;padding:0}
  th{border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+ th:not([data-k]){border:0;border-radius:0;padding:8px 0;cursor:default}
  tr{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:8px 0;padding:6px 8px}
  td{border:0;padding:2px 0}
  td[data-l]::before{content:attr(data-l) ": ";color:var(--mut);font-size:.8rem}
