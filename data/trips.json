@@ -622,7 +622,7 @@
      "id": "sa685-out",
      "mode": "bus",
      "dir": "out",
-     "train": "Sumber Alam 685 (Irvan's ticket, bought)",
+     "train": "Sumber Alam 685 (bought)",
      "class": "Bus",
      "from": "Pondok Pinang (Agen Sumber Alam)",
      "to": "Sumber Alam Temon (Kulon Progo)",
@@ -633,8 +633,8 @@
      "price": 170000,
      "priceMax": null,
      "verified": true,
-     "priceNote": "Irvan bought this ticket on Traveloka (he reported it). Traveloka listing also shows Rp170,000, read 28 Nov 2026 20:01 WIB.",
-     "note": "Your ticket. Overnight, 11h55. Arrives 06:20 at Temon (Kulon Progo), about 60 km from Mlati, so the in-time check covers the bus only. Onward options, all unverified estimates checked 28 Nov 2026 20:15 WIB: (1) Stay on the same bus: it also stops at Gamping at 06:50 (Traveloka listing), about 10 km from Mlati, then a taxi of roughly 30 min puts you at the venue near 07:30. Ask Sumber Alam or Traveloka first, because your ticket ends at Temon and a drop-off change is not confirmed. (2) Taxi, Grab or Gojek car from Temon straight to Mlati: roughly 1.5 to 1.75 h, so about 08:00 to 08:15 if you leave 06:30. Fare not checked. (3) Train: short ride to YIA or Wates station, then KA Bandara YIA (35 to 40 min to Tugu, Rp20k regular or Rp40k Xpress per Bisnis.com Oct 2025), then Trans Jogja 8 and a walk, about 1 h from Tugu on his Maps screenshot. On the 22 Nov timetable the trains from YIA left at 06:30 and 08:33, so you would miss 06:30 and reach Tugu about 09:10. The new timetable from 1 Dec (50 trips a day, first from YIA 05:17) is not published in detail, so the 06:00 to 07:00 trains are unknown. Prameks from Wojo at 05:32 is too early."
+     "priceNote": "Bought on Traveloka (reported by the buyer). Traveloka listing also shows Rp170,000, read 28 Nov 2026 20:01 WIB.",
+     "note": "The bought ticket. Overnight, 11h55. Arrives 06:20 at Temon (Kulon Progo), about 60 km from Mlati, so the in-time check covers the bus only. Onward options, all unverified estimates checked 28 Nov 2026 20:15 WIB: (1) Stay on the same bus: it also stops at Gamping at 06:50 (Traveloka listing), about 10 km from Mlati, then a taxi of roughly 30 min puts you at the venue near 07:30. Ask Sumber Alam or Traveloka first, because your ticket ends at Temon and a drop-off change is not confirmed. (2) Taxi, Grab or Gojek car from Temon straight to Mlati: roughly 1.5 to 1.75 h, so about 08:00 to 08:15 if you leave 06:30. Fare not checked. (3) Train: short ride to YIA or Wates station, then KA Bandara YIA (35 to 40 min to Tugu, Rp20k regular or Rp40k Xpress per Bisnis.com Oct 2025), then Trans Jogja 8 and a walk, about 1 h from Tugu on his Maps screenshot. On the 22 Nov timetable the trains from YIA left at 06:30 and 08:33, so you would miss 06:30 and reach Tugu about 09:10. The new timetable from 1 Dec (50 trips a day, first from YIA 05:17) is not published in detail, so the 06:00 to 07:00 trains are unknown. Prameks from Wojo at 05:32 is too early."
     },
     {
      "id": "sa685-gamping",
@@ -652,7 +652,7 @@
      "priceMax": null,
      "verified": true,
      "priceNote": "Traveloka listing, Rp170,000, read 28 Nov 2026 20:01 WIB.",
-     "note": "Same departure as your ticket but dropping at Gamping, about 10 km from Mlati. Arrives 06:50. Onward ride to the venue (taxi or Trans Jogja) not checked. Other drop-offs on the same listing: Sentolo 06:35, Pedes 06:44, Giwangan 07:00, Pool Sumber Alam Yogyakarta 07:05."
+     "note": "Same departure as the bought ticket but dropping at Gamping, about 10 km from Mlati. Arrives 06:50. Onward ride to the venue (taxi or Trans Jogja) not checked. Other drop-offs on the same listing: Sentolo 06:35, Pedes 06:44, Giwangan 07:00, Pool Sumber Alam Yogyakarta 07:05."
     },
     {
      "id": "annura-2115-jombor",
@@ -944,7 +944,7 @@
     "start": "08:00",
     "end": "15:00",
     "place": "Graha Wiyata Lt. 9, Universitas 17 Agustus 1945 Surabaya (Jl. Semolowaru 45)",
-    "note": "times in WIB. Date and time verified by Irvan's phone view of the event page, 28 Nov 2026 19:16 WIB (shows 12 Desember 2026, 08:00 - 15:00). Venue Graha Wiyata Lt. 9, Universitas 17 Agustus 1945 Surabaya, Jl. Semolowaru No.45 and tickets from Rp 25.000 (paid, via surabayadev.org) are from the event page, 28 Nov 2026 19:16 WIB."
+    "note": "times in WIB. Date and time verified by a phone view of the event page, 28 Nov 2026 19:16 WIB (shows 12 Desember 2026, 08:00 - 15:00). Venue Graha Wiyata Lt. 9, Universitas 17 Agustus 1945 Surabaya, Jl. Semolowaru No.45 and tickets from Rp 25.000 (paid, via surabayadev.org) are from the event page, 28 Nov 2026 19:16 WIB."
    },
    "status": "Live check 28 Nov 2026, 19:42-19:55 WIB, on public tiket.com listings (trains, direct flights, buses) for 11, 12 and 13 Dec 2026. Train times also match the 168railway GAPEKA 2026 timetable (valid from 1 Dec 2026). Prices are listing prices and change; seats are not guaranteed. Bus listings stop at about 18:00-18:30 departures in what tiket.com returned, so later night buses may exist. Hotel nights, airport and station transfers are not priced. Nothing booked.",
    "book": "https://booking.kai.id/",
