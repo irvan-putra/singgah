@@ -65,7 +65,7 @@ a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 <footer>Built with AI assistance (Instinct and others). Not everything has been reviewed by Irvan. The data was gathered by AI from public pages and has not been checked live. Open source, AGPL-3.0: <a href="https://github.com/irvan-putra/singgah">github.com/irvan-putra/singgah</a>.</footer>
 <script>
 const $=id=>document.getElementById(id);
-const rp=(n,m)=>n==null?"n/a":"Rp"+(n/1000).toLocaleString("id-ID")+"k"+(m&&m!==n?"-"+(m/1000).toLocaleString("id-ID")+"k":"");
+const rp=(n,m)=>n==null?"n/a":"Rp"+Math.round(n/1000).toLocaleString("id-ID")+"k"+(m&&m!==n?"-"+Math.round(m/1000).toLocaleString("id-ID")+"k":"");
 const dd=d=>d?new Date(d+"T00:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}):"";
 let data,trip,sortKey="dep",sortDir=1,filt={dir:"all",early:false,priced:false,works:false};
 const cols=[["train","Transport"],["dir","Dir"],["dep","Departs"],["arr","Arrives"],["price","Price"],["note","Note"]];
