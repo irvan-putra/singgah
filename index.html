@@ -50,7 +50,7 @@ a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 
 <h2>All transport</h2>
 <div class="chips" id="chips"></div>
-<div class="mode-panel" id="mode-panel" hidden></div>
+<div class="mode-panel" id="mode-panel"></div>
 <p class="mut" id="state"></p>
 <table id="tbl"><thead><tr id="hr"></tr></thead><tbody id="rows"></tbody></table>
 <p class="mut" id="count"></p>
@@ -63,7 +63,7 @@ a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 const $=id=>document.getElementById(id);
 const rp=(n,m)=>n==null?"n/a":"Rp"+Math.round(n/1000).toLocaleString("id-ID")+"k"+(m&&m!==n?"-"+Math.round(m/1000).toLocaleString("id-ID")+"k":"");
 const dd=d=>d?new Date(d+"T00:00:00").toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"}):"";
-let data,trip,sortKey="price",sortDir=1,filt={dir:"out",modes:["train","bus","shuttle","flight"]},modePanelOpen=false;
+let data,trip,sortKey="price",sortDir=1,filt={dir:"out",modes:["train","bus","shuttle","flight"]},modePanelOpen=true;
 const cols=[ ["train","Transport"],["dep","Departs"],["arr","Arrives"],["price","Price"] ];
 const key=(l,k)=>k==="dep"?l.depDate+l.dep:k==="arr"?(l.arrDate?l.arrDate+l.arr:"9"):k==="price"?(l.price??1e12):k==="dir"?l.dir:k==="note"?l.note:l.train;
 const evStart=()=>trip.event.date+trip.event.start, evEnd=()=>trip.event.date+trip.event.end;
