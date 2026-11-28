@@ -93,7 +93,7 @@ function render(){
   trip.legs.filter(l=>l.dir===dir&&l.price!=null).forEach(l=>{const m=l.mode||"train",state=l.verified===true?"verified":"unverified",k=m+"|"+state,mx=l.priceMax||l.price;if(!groups[k])groups[k]={mode:m,state,lo:1/0,hi:0};groups[k].lo=Math.min(groups[k].lo,l.price);groups[k].hi=Math.max(groups[k].hi,mx)});
   return order.flatMap(m=>["verified","unverified"].filter(state=>groups[m+"|"+state]).map(state=>{const g=groups[m+"|"+state];return `${label[m]} (${state}): ${rp(g.lo,g.hi)}`})).join("<br>");
  };
- $("ranges").innerHTML=[['Going','out'],['Return','back']].map(([title,dir])=>{const lines=rangeLines(dir);return lines?`<b>${title}</b><br>${lines}`:""}).filter(Boolean).join("<br><br>")if(!trip.legs.length)$("ranges").innerHTML=trip.status||"No transport options yet.";
+ $("ranges").innerHTML=[['Going','out'],['Return','back']].map(([title,dir])=>{const lines=rangeLines(dir);return lines?`<b>${title}</b><br>${lines}`:""}).filter(Boolean).join("<br><br>");if(!trip.legs.length)$("ranges").innerHTML=trip.status||"No transport options yet.";
  const byId=Object.fromEntries(trip.legs.map(l=>[l.id,l]));
  const buyFor=l=>{const m=l.mode||"train";const c=trip.combos.find(c=>c.legs.includes(l.id))||trip.combos.find(c=>c.legs.some(i=>(byId[i].mode||"train")===m));if(!c)return"";let bs=c.buy||[];
   if(m==="bus"||m==="shuttle")bs=bs.filter(b=>l.dir==="out"?!/Jogja to Jakarta|^Return/.test(b.label):!/Jakarta to Jogja|^Going/.test(b.label)||/Traveloka/.test(b.label));
