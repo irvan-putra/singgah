@@ -48,6 +48,7 @@ a{color:var(--acc)}footer{margin:2rem 0 1rem;font-size:.85rem;color:var(--mut)}
 
 <h2>All transport</h2>
 <div class="chips" id="chips"></div>
+<p class="mut" id="state"></p>
 <table id="tbl"><thead><tr id="hr"></tr></thead><tbody id="rows"></tbody></table>
 <p class="mut" id="count"></p>
 
@@ -95,6 +96,9 @@ function render(){
  const chips=[["dir","all","All"],["dir","out","Going"],["dir","back","Return"],["priced",true,"Has a fare"]];
  $("chips").innerHTML=chips.map(([k,v,t])=>`<button aria-pressed="${filt[k]===v}" data-k="${k}" data-v="${v}">${t}</button>`).join("");
  $("chips").querySelectorAll("button").forEach(b=>b.onclick=()=>{const k=b.dataset.k,v=b.dataset.v;if(k==="dir")filt.dir=v;else filt[k]=!filt[k];render()});
+ const sortText={train:["name A to Z","name Z to A"],dir:["return options first","going options first"],dep:["earliest departure first","latest departure first"],arr:["earliest arrival first","latest arrival first"],price:["cheapest first","most expensive first"],note:["note A to Z","note Z to A"]};
+ const filterText=(filt.dir==="all"?"All options":filt.dir==="out"?"Going options only":"Return options only")+(filt.priced?", with a listed fare":"");
+ $("state").textContent=filterText+" · "+sortText[sortKey][sortDir>0?0:1]+" (tap a heading again to flip)";
  $("hr").innerHTML=cols.map(([k,t])=>`<th data-k="${k}" ${k===sortKey?`aria-sort="${sortDir>0?"ascending":"descending"}" data-arrow="${sortDir>0?" ▲":" ▼"}"`:""}>${t}</th>`).join("");
  $("hr").querySelectorAll("th").forEach(h=>h.onclick=()=>{const k=h.dataset.k;if(sortKey===k)sortDir*=-1;else{sortKey=k;sortDir=1}render()});
  const cheap={};
